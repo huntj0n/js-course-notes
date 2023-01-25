@@ -94,13 +94,38 @@
 // const johnsMass = 92;
 // const johnsHeight = 1.95;
 
-const marksMass = 95;
-const marksHeight = 1.95;
-const johnsMass = 85;
-const johnsHeight = 1.76;
+// const marksMass = 95;
+// const marksHeight = 1.95;
+// const johnsMass = 85;
+// const johnsHeight = 1.76;
 
-const marksBMI = marksMass / marksHeight ** 2;
-const johnsBMI = johnsMass / johnsHeight ** 2;
+// const marksBMI = marksMass / marksHeight ** 2;
+// const johnsBMI = johnsMass / johnsHeight ** 2;
 
-let markHigherBMI = marksBMI > johnsBMI;
-console.log(markHigherBMI);
+// let markHigherBMI = marksBMI > johnsBMI;
+// console.log(markHigherBMI);
+////////////////////////////////////////////////////////
+
+//STRINGS AND TEMPLATE LITERALS
+const firstName = "Jonas";
+const job = "teacher";
+const birthYear = 1991;
+const year = 2037;
+
+const jonas =
+  "I'm " + firstName + ", a " + (year - birthYear) + " year old " + job;
+console.log(jonas);
+
+const jonasNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}`;
+console.log(jonasNew);
+
+console.log(`Just a normal string...`);
+
+console.log(
+  "string with \n\
+multiple\n\
+lines"
+);
+console.log(`another string with
+multiple
+lines`);
