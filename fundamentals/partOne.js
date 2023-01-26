@@ -218,30 +218,52 @@
 // everything else is 'truthy'
 // ie, converts/boils down to true or false evaluations
 
-console.log(Boolean(0));
-console.log(Boolean(undefined));
-console.log(Boolean("Jonas"));
-console.log(Boolean({}));
-console.log(Boolean(""));
+// console.log(Boolean(0));
+// console.log(Boolean(undefined));
+// console.log(Boolean("Jonas"));
+// console.log(Boolean({}));
+// console.log(Boolean(""));
 
-// logical operators and if/else conditions
-const money = 10;
-if (money) {
-  console.log("dont spend it all");
-} else {
-  console.log("you should get a job");
-}
+// // logical operators and if/else conditions
+// const money = 10;
+// if (money) {
+//   console.log("dont spend it all");
+// } else {
+//   console.log("you should get a job");
+// }
 
-// let height;
+// // let height;
+// // if (height) {
+// //   console.log("YAY! Height is defined");
+// // } else {
+// //   console.log("Height is UNDEFINED");
+// // }
+// let height = 0;
 // if (height) {
 //   console.log("YAY! Height is defined");
 // } else {
 //   console.log("Height is UNDEFINED");
 // }
-let height = 0;
-if (height) {
-  console.log("YAY! Height is defined");
+// //this is an example of a bug using this method, 0 evaluates to false even though it is technically 'defined'
+
+//======= EQUALITY OPERATORS =======
+const age = 18;
+if (age === 18) console.log("You just became an adult");
+
+console.log(18 === 18, 18 === 19, 18 == "18", 18 === 18);
+
+//=== strict equality operator (does not do type coercion)
+//== loose equality operator (does type coercion)
+//its better to do conversion/coercion BEFORE you use the equality operator
+
+const favorite = prompt("Whats your favorite number");
+console.log(favorite);
+console.log(typeof favorite);
+
+if (favorite == 23) {
+  console.log("Cool! 23 is an amazing number");
+} else if (favorite == 7) {
+  console.log("Cool!  7  is a cool number");
 } else {
-  console.log("Height is UNDEFINED");
+  console.log("nice number, but its not 23 or 7");
 }
-//this is an example of a bug using this method, 0 evaluates to false even though it is technically 'defined'
