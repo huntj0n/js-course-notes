@@ -153,3 +153,32 @@
 
 /////////////////////////////////////////////////
 //========== CODING CHALLENGE 2 =============
+//Use the BMI example from Challenge #1, and the code you already wrote, and impore it!
+
+// 1. Print a nice output to the console, saying who has the higher BMI. The message can be either "Mark's BMI is higher than Jon's!" or "John's BMI (28.3) is higher than John's (23.9)!"
+
+//hint: Use an if/else statement
+
+const marksMass = 78;
+const marksHeight = 1.69;
+const johnsMass = 92;
+const johnsHeight = 1.95;
+
+// const marksMass = 95;
+// const marksHeight = 1.95;
+// const johnsMass = 85;
+// const johnsHeight = 1.76;
+
+const marksBMI = marksMass / marksHeight ** 2;
+const johnsBMI = johnsMass / johnsHeight ** 2;
+
+let markHigherBMI = marksBMI > johnsBMI;
+if (markHigherBMI) {
+  console.log(
+    `Mark's BMI (${marksBMI}) is higher than John's BMI (${johnsBMI})`
+  );
+} else {
+  console.log(
+    `Mark's BMI (${marksBMI}) is lower than John's BMI (${johnsBMI})`
+  );
+}
