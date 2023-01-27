@@ -247,23 +247,50 @@
 // //this is an example of a bug using this method, 0 evaluates to false even though it is technically 'defined'
 
 //======= EQUALITY OPERATORS =======
-const age = 18;
-if (age === 18) console.log("You just became an adult");
+// const age = 18;
+// if (age === 18) console.log("You just became an adult");
 
-console.log(18 === 18, 18 === 19, 18 == "18", 18 === 18);
+// console.log(18 === 18, 18 === 19, 18 == "18", 18 === 18);
 
-//=== strict equality operator (does not do type coercion)
-//== loose equality operator (does type coercion)
-//its better to do conversion/coercion BEFORE you use the equality operator
+// //=== strict equality operator (does not do type coercion)
+// //== loose equality operator (does type coercion)
+// //its better to do conversion/coercion BEFORE you use the equality operator
 
-const favorite = prompt("Whats your favorite number");
-console.log(favorite);
-console.log(typeof favorite);
+// const favorite = prompt("Whats your favorite number");
+// console.log(favorite);
+// console.log(typeof favorite);
 
-if (favorite == 23) {
-  console.log("Cool! 23 is an amazing number");
-} else if (favorite == 7) {
-  console.log("Cool!  7  is a cool number");
+// if (favorite == 23) {
+//   console.log("Cool! 23 is an amazing number");
+// } else if (favorite == 7) {
+//   console.log("Cool!  7  is a cool number");
+// } else {
+//   console.log("nice number, but its not 23 or 7");
+// }
+
+//======= BOOLEAN LOGIC/LOGICAL OPERATORS =======
+//and, or, not
+//!A, A AND B, A OR B, !A and B, A OR !B...
+const hasDriversLicense = true;
+const hasGoodVision = true;
+
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasDriversLicense && hasGoodVision);
+
+const shouldDrive = hasDriversLicense && hasGoodVision;
+
+// if (shouldDrive) {
+//   console.log("Sarah is able to drive!");
+// } else {
+//   console.log("Someone else should drive...");
+// }
+
+const isTired = true;
+console.log(hasDriversLicense && hasGoodVision && isTired);
+
+if (shouldDrive && hasGoodVision && !isTired) {
+  console.log("Sarah is able to drive!");
 } else {
-  console.log("nice number, but its not 23 or 7");
+  console.log("Someone else should drive...");
 }
