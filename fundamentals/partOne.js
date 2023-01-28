@@ -319,15 +319,60 @@
 // const koalasScore = (109 + 95 + 123) / 3;
 
 //bonus2
-const dolphinsScore = (97 + 112 + 101) / 3;
-const koalasScore = (109 + 95 + 106) / 3;
+// const dolphinsScore = (97 + 112 + 101) / 3;
+// const koalasScore = (109 + 95 + 106) / 3;
 
-if (dolphinsScore === koalasScore && dolphinsScore > 100 && koalasScore > 100) {
-  console.log("Its a draw!");
-} else if (dolphinsScore > koalasScore && dolphinsScore > 100) {
-  console.log("Dolphins win!");
-} else if (koalasScore > dolphinsScore && koalasScore > 100) {
-  console.log("Koalas win!");
-} else {
-  console.log("No one was over 100 points");
-}
+// if (dolphinsScore === koalasScore && dolphinsScore >= 100 && koalasScore >= 100) {
+//   console.log("Its a draw!");
+// } else if (dolphinsScore > koalasScore && dolphinsScore >= 100) {
+//   console.log("Dolphins win!");
+// } else if (koalasScore > dolphinsScore && koalasScore >= 100) {
+//   console.log("Koalas win!");
+// } else {
+//   console.log("No one was over 100 points");
+// }
+
+////////////////////////////////////////////////////////////////
+
+//======== THE SWITCH STATEMENT =======
+// const day = "monday";
+
+// switch (day) {
+//   case "monday":
+//     console.log("plan course structure");
+//     console.log("go to coding meetup");
+//     break;
+//   case "tuesday":
+//     console.log("preparing theory videos");
+//     break;
+//   case "wednesday":
+//   case "thursday":
+//     console.log("write code examples");
+//     break;
+//   case "friday":
+//     console.log("record videos");
+//     break;
+//   case "saturday":
+//   case "sunday":
+//     console.log("enjoy the weekend");
+//     break;
+//   default:
+//     console.log("not a valid day");
+// }
+
+// if (day === "monday") {
+//   console.log("plan course structure");
+//   console.log("go to coding meetup");
+// } else if (day === "tuesday") {
+//   console.log("preparing theory videos");
+// } else if (day === "wednesday" || day === "thursday") {
+//   console.log("write code examples");
+// } else if (day === "friday") {
+//   console.log("record videos");
+// } else if (day === "saturday" || day === "sunday") {
+//   console.log("enjoy the weekend");
+// } else {
+//   console.log("not a valid day");
+// }
+
+//=======
