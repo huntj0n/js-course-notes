@@ -310,7 +310,24 @@
 // TEST DATA BONUS 1: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 123
 // TEST DATA BONUS 2: Dolpphins score 97, 112 and 101. Koalas score 109, 95 and 106.
 
-const dolphinsScore = (96 + 108 + 89) / 3;
-const koalasScore = (88 + 91 + 110) / 3;
+// initial
+// const dolphinsScore = (96 + 108 + 89) / 3;
+// const koalasScore = (88 + 91 + 110) / 3;
 
-// if()
+//bonus 1
+// const dolphinsScore = (97 + 112 + 101) / 3;
+// const koalasScore = (109 + 95 + 123) / 3;
+
+//bonus2
+const dolphinsScore = (97 + 112 + 101) / 3;
+const koalasScore = (109 + 95 + 106) / 3;
+
+if (dolphinsScore === koalasScore && dolphinsScore > 100 && koalasScore > 100) {
+  console.log("Its a draw!");
+} else if (dolphinsScore > koalasScore && dolphinsScore > 100) {
+  console.log("Dolphins win!");
+} else if (koalasScore > dolphinsScore && koalasScore > 100) {
+  console.log("Koalas win!");
+} else {
+  console.log("No one was over 100 points");
+}
