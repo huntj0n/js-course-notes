@@ -63,24 +63,39 @@
 //     return age = 2037 - birthyear
 // }
 // const age2 =  calcAge2(1991)
-const calcAge3 = (birthyear) => 2037 - birthyear;
-const age3 = calcAge3(1991);
-console.log(age3);
+// const calcAge3 = (birthyear) => 2037 - birthyear;
+// const age3 = calcAge3(1991);
+// console.log(age3);
 
-const yearsUntilRetirement = (birthyear) => {
-  //if you had multiple parameters you just need to wrap them all in paranthesis
-  const age = 2037 - birthyear;
-  const retirement = 65 - age;
-  return retirement;
-};
-console.log(yearsUntilRetirement(1991));
+// const yearsUntilRetirement = (birthyear) => {
+//   //if you had multiple parameters you just need to wrap them all in paranthesis
+//   const age = 2037 - birthyear;
+//   const retirement = 65 - age;
+//   return retirement;
+// };
+// console.log(yearsUntilRetirement(1991));
 
-const yearsUntilRetirement2 = (birthyear, firstName) => {
-  //if you had multiple parameters you just need to wrap them all in paranthesis
-  const age = 2037 - birthyear;
-  const retirement = 65 - age;
-  // return retirement;
-  return `${firstName} retires in ${retirement} years`;
-};
-console.log(yearsUntilRetirement2(1991, "Jonas"));
-console.log(yearsUntilRetirement2(1980, "Bob"));
+// const yearsUntilRetirement2 = (birthyear, firstName) => {
+//   //if you had multiple parameters you just need to wrap them all in paranthesis
+//   const age = 2037 - birthyear;
+//   const retirement = 65 - age;
+//   // return retirement;
+//   return `${firstName} retires in ${retirement} years`;
+// };
+// console.log(yearsUntilRetirement2(1991, "Jonas"));
+// console.log(yearsUntilRetirement2(1980, "Bob"));
+
+//
+//===== FUNCTIONS CALLING OTHER FUNCTIONS =====
+//
+
+function cutFruitPieces(fruit) {
+  return fruit * 4;
+}
+
+function fruitProcessor(apples, oranges) {
+  const applePieces = cutFruitPieces(apples);
+  const orangePieces = cutFruitPieces(oranges);
+  const juice = `juice with ${applePieces} pieces of apples and ${orangePieces} pieces of oranges`;
+  return juice;
+}
