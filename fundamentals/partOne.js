@@ -375,4 +375,21 @@
 //   console.log("not a valid day");
 // }
 
-//=======
+//======= STATESMENTS AND EXPRESSIONS =======
+
+// expressions produce values
+// 3 + 4;
+// 1991;
+// true && false && !false;
+
+// // declarations are like sentences
+// if (23 > 10) {
+//   const str = "23 is bigger";
+// }
+//these dont really produce a value, they just declare something (a statement)
+// expressions produce values, statements are like full sentences that translate our actions that we want our program to perform
+// statements wont work/make sense where JS expects an expression
+
+//
+//======= TERNERY OPERATOR =======
+//
