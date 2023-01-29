@@ -105,23 +105,65 @@
 //
 //======= REVIEWING FUNCTIONS =======
 //
-const calcAge = function (birthyear) {
-  return 2037 - birthyear;
-};
-const yearsUntilRetirement2 = function (birthyear, firstName) {
-  const age = calcAge(birthyear);
-  const retirement = 65 - age;
+// const calcAge = function (birthyear) {
+//   return 2037 - birthyear;
+// };
+// const yearsUntilRetirement2 = function (birthyear, firstName) {
+//   const age = calcAge(birthyear);
+//   const retirement = 65 - age;
 
-  if (retirement > 0) {
-    console.log(`${firstName} retires in ${retirement} years`);
-    return retirement;
+//   if (retirement > 0) {
+//     console.log(`${firstName} retires in ${retirement} years`);
+//     return retirement;
+//   } else {
+//     console.log(`${firstName} has already retired`);
+//     return -1;
+//   }
+
+//   return retirement;
+// };
+
+// console.log(yearsUntilRetirement2(1991, "Jonas"));
+// console.log(yearsUntilRetirement2(1950, "Mike"));
+
+/////////////////////////////////////
+//======= CODING CHALLENGE 1 =======
+/////////////////////////////////////
+/*
+Back to the two gymnastic teams, the Dolphins and the Koalas. There is a new gymnastics discipline, which works differently.
+Each team competes 3 times, and then the average of the three scores is calculated (so one average score per team.)
+A team ONLY wins if it has at least DOUBLE the average score of the other team. Otherwise, no team wins.
+
+1. Create an arrow function 'calcAverage' to calculate the average of 3 scores.
+2. Use the function to calculate the average for both teams
+3. Create a function 'checkWinner' that takes the average score of each team as parameters ('avgDolphins', 'aveKoalas') and then logs the winner to the console, together with the victory points, according to the rule above. Example: "Koalas win (30 to 13)"
+4. Use the 'checkWinner' function to determine the winner for both DATA 1 and DATA 2.
+5. Ignore draws this time.
+
+TEST DATA 1: Dolphins score 44, 23 and 71. Koalas score 65, 54 and 49
+TEST DATA 2: Dolphins score 85, 54 and 41. Koalas score 23, 34 and 27
+*/
+
+const calcAvg = (a, b, c) => (a + b + c) / 3;
+
+// TEST DATA 1
+const avgDolphins1 = calcAvg(44, 23, 71);
+const avgKoalas1 = calcAvg(65, 54, 49);
+//TEST DATA 2
+const avgDolphins2 = calcAvg(85, 54, 41);
+const avgKoalas2 = calcAvg(23, 34, 27);
+
+const checkWinner = function (avgDolphins, avgKoalas) {
+  if (avgDolphins >= avgKoalas * 2) {
+    const result = `Dolphins Win (${avgDolphins} to ${avgKoalas})`;
+    return result;
+  } else if (avgKoalas >= avgDolphins * 2) {
+    const result = `Koalas Win (${avgKoalas} to ${avgDolphins})`;
+    return result;
   } else {
-    console.log(`${firstName} has already retired`);
-    return -1;
+    return "no team wins!";
   }
-
-  return retirement;
 };
 
-console.log(yearsUntilRetirement2(1991, "Jonas"));
-console.log(yearsUntilRetirement2(1950, "Mike"));
+console.log(checkWinner(avgDolphins1, avgKoalas1));
+console.log(checkWinner(avgDolphins2, avgKoalas2));
