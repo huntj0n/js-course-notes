@@ -144,26 +144,76 @@ TEST DATA 1: Dolphins score 44, 23 and 71. Koalas score 65, 54 and 49
 TEST DATA 2: Dolphins score 85, 54 and 41. Koalas score 23, 34 and 27
 */
 
-const calcAvg = (a, b, c) => (a + b + c) / 3;
+// const calcAvg = (a, b, c) => (a + b + c) / 3;
 
-// TEST DATA 1
-const avgDolphins1 = calcAvg(44, 23, 71);
-const avgKoalas1 = calcAvg(65, 54, 49);
-//TEST DATA 2
-const avgDolphins2 = calcAvg(85, 54, 41);
-const avgKoalas2 = calcAvg(23, 34, 27);
+// // TEST DATA 1
+// const avgDolphins1 = calcAvg(44, 23, 71);
+// const avgKoalas1 = calcAvg(65, 54, 49);
+// //TEST DATA 2
+// const avgDolphins2 = calcAvg(85, 54, 41);
+// const avgKoalas2 = calcAvg(23, 34, 27);
 
-const checkWinner = function (avgDolphins, avgKoalas) {
-  if (avgDolphins >= avgKoalas * 2) {
-    const result = `Dolphins Win (${avgDolphins} to ${avgKoalas})`;
-    return result;
-  } else if (avgKoalas >= avgDolphins * 2) {
-    const result = `Koalas Win (${avgKoalas} to ${avgDolphins})`;
-    return result;
-  } else {
-    return "no team wins!";
-  }
+// const checkWinner = function (avgDolphins, avgKoalas) {
+//   if (avgDolphins >= avgKoalas * 2) {
+//     const result = `Dolphins Win (${avgDolphins} to ${avgKoalas})`;
+//     return result;
+//   } else if (avgKoalas >= avgDolphins * 2) {
+//     const result = `Koalas Win (${avgKoalas} to ${avgDolphins})`;
+//     return result;
+//   } else {
+//     return "no team wins!";
+//   }
+// };
+
+// console.log(checkWinner(avgDolphins1, avgKoalas1));
+// console.log(checkWinner(avgDolphins2, avgKoalas2));
+
+//////////////////////////////////////////////////////
+
+//
+//======= INTRO TO ARRAYS =======
+//
+const friend1 = "Michael";
+const friend2 = "Steven";
+const friend3 = "Peter";
+
+const friends = ["Michael", "Steven", "Peter"];
+console.log(friends);
+
+const y = new Array(1991, 1984, 2008, 2020);
+
+console.log(friends[0]);
+console.log(friends[2]);
+console.log(friends.length);
+console.log(friends.length - 1);
+//remember, expressions are anything that produces a value
+
+//only primitive values are immutable, you can mutate arrays even if they are declared with const
+friends[2] = "Jay";
+console.log(friends);
+// friends = ['bob', 'alice'] // here, you cant redo the entire array, just specific indicies
+
+const firstName = "Jonas";
+const jonas = [firstName, "Schmedtmann", 2037 - 1991, "teacher", [friends]];
+console.log(jonas);
+
+//exercise
+const calcAge = function (birthyear) {
+  return 2037 - birthyear;
 };
+const years = [1990, 1967, 2002, 2010, 2018];
+calcAge(years); // ?, the function doesnt know how to handle an array since it was programmed with a number
+console.log(years + 10, years - 10); // you cant do calculations on arrays outright, but you can do them on individual elements (you need to iterate through arrays)
 
-console.log(checkWinner(avgDolphins1, avgKoalas1));
-console.log(checkWinner(avgDolphins2, avgKoalas2));
+const age1 = calcAge(years[0]);
+const age2 = calcAge(years[1]);
+const age3 = calcAge(years.length - 1);
+console.log(age1, age2, age3);
+
+//each index just needs to be an expression
+const ages = [
+  calcAge(years[0]),
+  calcAge(years[1]),
+  calcAge(years[years.length - 1]),
+];
+console.log(ages);
