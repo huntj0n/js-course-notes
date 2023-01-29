@@ -37,3 +37,20 @@
 //
 //===== FUNCTION DECLARATIONS VS EXPRESSIONS =====
 //
+//funciton declarations
+// function calcAge1(birthyear){
+//     // const age = 237 - birthyear
+//     // return  age
+//     return age = 2037-birthyear;
+// }
+// const age1 = calcAge1(1991)
+
+// // function expressions
+// const calcAge2 = function(birthyear){
+//     return age = 2037 - birthyear
+// }
+// const age2 =  calcAge2(1991)
+
+// console.log(age1, age2)
+
+//which should you use? often its up to personal preference. expressions allow you to have things stored in variables but its up to you. you just need to know how to use and  distinguish each.
