@@ -391,5 +391,26 @@
 // statements wont work/make sense where JS expects an expression
 
 //
-//======= TERNERY OPERATOR =======
+//======= TERNERY: THE CONDITIONAL OPERATOR =======
 //
+const age = 23;
+age >= 18
+  ? console.log("i like to drink wine")
+  : console.log("i like to drink water");
+//  condition ? if : else
+// operators produce a value, in other words, operators are expressions
+// exppressions can be stored in a variable, we can conditionally declare them with ternaries
+
+const drink = age >= 18 ? "wine" : "water";
+console.log(drink);
+
+let drink2;
+if (age >= 18) {
+  drink2 = "wine";
+} else {
+  drink2 = "water";
+}
+
+console.log(`i like to drink ${age >= 18 ? "wine" : "water"}`);
+// operator = expressions
+//ternaries arent a replacement for if/else statements. We still need if statements for bigger blocks of code and conditionals, but ternaries are great for quick decisions
