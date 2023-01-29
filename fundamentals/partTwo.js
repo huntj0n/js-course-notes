@@ -54,3 +54,33 @@
 // console.log(age1, age2)
 
 //which should you use? often its up to personal preference. expressions allow you to have things stored in variables but its up to you. you just need to know how to use and  distinguish each.
+
+//
+//======= ARROW FUNCTIONS =======
+//
+// a specially written function expression
+// const calcAge2 = function(birthyear){
+//     return age = 2037 - birthyear
+// }
+// const age2 =  calcAge2(1991)
+const calcAge3 = (birthyear) => 2037 - birthyear;
+const age3 = calcAge3(1991);
+console.log(age3);
+
+const yearsUntilRetirement = (birthyear) => {
+  //if you had multiple parameters you just need to wrap them all in paranthesis
+  const age = 2037 - birthyear;
+  const retirement = 65 - age;
+  return retirement;
+};
+console.log(yearsUntilRetirement(1991));
+
+const yearsUntilRetirement2 = (birthyear, firstName) => {
+  //if you had multiple parameters you just need to wrap them all in paranthesis
+  const age = 2037 - birthyear;
+  const retirement = 65 - age;
+  // return retirement;
+  return `${firstName} retires in ${retirement} years`;
+};
+console.log(yearsUntilRetirement2(1991, "Jonas"));
+console.log(yearsUntilRetirement2(1980, "Bob"));
