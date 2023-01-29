@@ -393,24 +393,50 @@
 //
 //======= TERNERY: THE CONDITIONAL OPERATOR =======
 //
-const age = 23;
-age >= 18
-  ? console.log("i like to drink wine")
-  : console.log("i like to drink water");
+// const age = 23;
+// age >= 18
+//   ? console.log("i like to drink wine")
+//   : console.log("i like to drink water");
 //  condition ? if : else
 // operators produce a value, in other words, operators are expressions
 // exppressions can be stored in a variable, we can conditionally declare them with ternaries
 
-const drink = age >= 18 ? "wine" : "water";
-console.log(drink);
+// const drink = age >= 18 ? "wine" : "water";
+// console.log(drink);
 
-let drink2;
-if (age >= 18) {
-  drink2 = "wine";
-} else {
-  drink2 = "water";
-}
+// let drink2;
+// if (age >= 18) {
+//   drink2 = "wine";
+// } else {
+//   drink2 = "water";
+// }
 
-console.log(`i like to drink ${age >= 18 ? "wine" : "water"}`);
+// console.log(`i like to drink ${age >= 18 ? "wine" : "water"}`);
 // operator = expressions
 //ternaries arent a replacement for if/else statements. We still need if statements for bigger blocks of code and conditionals, but ternaries are great for quick decisions
+
+//
+////////////////////////////////////
+//======= CODING CHALLENGE 4 =======
+////////////////////////////////////
+//
+
+/* 
+Steven wants to build a very simple tip calculator for whenever he goes eating in a restaurant. In his country, its usual to tip 15% if the bill value is between 50 and 300. If the value is different , the tip is 20%
+
+1. Your task is to calculate the tip, depending on the bill value. Create a variable called 'tip' for this. Its not allowed to use an if/else statement (if its easier or you, you can start with an if/else statement, and then try to convert it to a ernary operator)
+2. Print a string to the console containing the bill value, the tip, and final value (bill + tip). Example: 'the bill was 275, the tip was 41.25, and the total value was 316.25'
+
+test data: Test for the bill values 275, 40 and 430
+*/
+
+const bill = 275;
+// const bill = 40
+// const bill = 430
+
+const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+
+const total = bill + tip;
+console.log(
+  `The bill was ${bill}, the tip was ${tip}, and the total was ${total}`
+);
