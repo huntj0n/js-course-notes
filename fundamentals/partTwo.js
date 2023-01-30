@@ -386,31 +386,50 @@ Let's go back to Mark and John comparing their BMI's! This time, lets use object
 TEST DATA: Mark weights 78kg and is 1.69m tall. John weights 92kg and is 1.95m tall.
 */
 
-const mark = {
-  fullName: "Mark Miller",
-  mass: 78,
-  height: 1.69,
+// const mark = {
+//   fullName: "Mark Miller",
+//   mass: 78,
+//   height: 1.69,
 
-  calcBMI: function () {
-    this.bmi = this.mass / this.height ** 2;
-    return this.bmi;
-  },
-};
-const john = {
-  fullName: "John Smith",
-  mass: 92,
-  height: 1.95,
+//   calcBMI: function () {
+//     this.bmi = this.mass / this.height ** 2;
+//     return this.bmi;
+//   },
+// };
+// const john = {
+//   fullName: "John Smith",
+//   mass: 92,
+//   height: 1.95,
 
-  calcBMI: function () {
-    this.bmi = this.mass / this.height ** 2;
-    return this.bmi;
-  },
-};
+//   calcBMI: function () {
+//     this.bmi = this.mass / this.height ** 2;
+//     return this.bmi;
+//   },
+// };
 
-john.calcBMI() > mark.calcBMI()
-  ? console.log(
-      `Johns BMI (${john.bmi}) is higher than Marks BMI (${mark.bmi})`
-    )
-  : console.log(
-      `Marks BMI (${mark.bmi}) is higher than Johns BMI (${john.bmi})`
-    );
+// john.calcBMI() > mark.calcBMI()
+//   ? console.log(
+//       `Johns BMI (${john.bmi}) is higher than Marks BMI (${mark.bmi})`
+//     )
+//   : console.log(
+//       `Marks BMI (${mark.bmi}) is higher than Johns BMI (${john.bmi})`
+//     );
+
+//
+//====== ITERATION: THE FOR LOOP =======
+//
+console.log("Lifting wieghts repitition: 1");
+console.log("Lifting wieghts repitition: 2");
+console.log("Lifting wieghts repitition: 3");
+console.log("Lifting wieghts repitition: 4");
+console.log("Lifting wieghts repitition: 5");
+console.log("Lifting wieghts repitition: 6");
+console.log("Lifting wieghts repitition: 7");
+console.log("Lifting wieghts repitition: 8");
+console.log("Lifting wieghts repitition: 9");
+console.log("Lifting wieghts repitition: 10");
+
+//for loops keep running while the condition is true
+for (let rep = 1; rep <= 10; rep++) {
+  console.log(`Lifting weights repitition: ${rep}`);
+}
