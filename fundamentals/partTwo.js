@@ -287,3 +287,51 @@ TEST DATA: 125, 555, and 44
 // console.log(bills, tips, totals);
 
 ////////////////////////////////////
+
+//
+//======= OBJECTS =======
+//
+const jonasArray = [
+  "Jonas",
+  "Schmedtmann",
+  2037 - 1991,
+  "teacher",
+  ["Michael", "Peter", "Steven"],
+];
+
+const jonas = {
+  firstName: "Jonas",
+  lastName: "Schmedtmann",
+  age: 2037 - 1991,
+  job: "teacher",
+  friends: ["Michael", "Peter", "Steven"],
+};
+
+// DOT NOTATION
+console.log(jonas.lastName);
+console.log(jonas["lastName"]); //main difference here is that with bracket notation you can put any EXPRESSION that you would like. ie you can compute the value from some operation
+
+const namekey = "Name";
+console.log(jonas["first" + namekey]);
+console.log(jonas["last" + namekey]);
+
+const interestedIn = prompt(
+  "What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends"
+);
+if (jonas[interestedIn]) {
+  console.log(jonas[interestedIn]);
+} else {
+  console.log(
+    "Wrong request! Choose between firstName, lastName, age, job, and friends"
+  );
+}
+
+jonas.location = "Portugal";
+jonas["twitter"] = "@jonasschmedtmann";
+console.log(jonas);
+
+//CHALLENGE
+//programatically write: 'Jonas has 3 friends and his best friend is called Michael'
+console.log(
+  `${jonas.firstName} has ${jonas.friends.length} friends and his best friend is called ${jonas.friends[0]}.`
+);
