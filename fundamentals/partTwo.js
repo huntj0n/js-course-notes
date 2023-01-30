@@ -291,47 +291,84 @@ TEST DATA: 125, 555, and 44
 //
 //======= OBJECTS =======
 //
-const jonasArray = [
-  "Jonas",
-  "Schmedtmann",
-  2037 - 1991,
-  "teacher",
-  ["Michael", "Peter", "Steven"],
-];
+// const jonasArray = [
+//   "Jonas",
+//   "Schmedtmann",
+//   2037 - 1991,
+//   "teacher",
+//   ["Michael", "Peter", "Steven"],
+// ];
 
+// const jonas = {
+//   firstName: "Jonas",
+//   lastName: "Schmedtmann",
+//   age: 2037 - 1991,
+//   job: "teacher",
+//   friends: ["Michael", "Peter", "Steven"],
+// };
+
+// // DOT NOTATION
+// console.log(jonas.lastName);
+// console.log(jonas["lastName"]); //main difference here is that with bracket notation you can put any EXPRESSION that you would like. ie you can compute the value from some operation
+
+// const namekey = "Name";
+// console.log(jonas["first" + namekey]);
+// console.log(jonas["last" + namekey]);
+
+// const interestedIn = prompt(
+//   "What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends"
+// );
+// if (jonas[interestedIn]) {
+//   console.log(jonas[interestedIn]);
+// } else {
+//   console.log(
+//     "Wrong request! Choose between firstName, lastName, age, job, and friends"
+//   );
+// }
+
+// jonas.location = "Portugal";
+// jonas["twitter"] = "@jonasschmedtmann";
+// console.log(jonas);
+
+// //CHALLENGE
+// //programatically write: 'Jonas has 3 friends and his best friend is called Michael'
+// console.log(
+//   `${jonas.firstName} has ${jonas.friends.length} friends and his best friend is called ${jonas.friends[0]}.`
+// );
+
+//
+//======= OBJECT METHODS =======
+//
 const jonas = {
   firstName: "Jonas",
   lastName: "Schmedtmann",
-  age: 2037 - 1991,
+  birthyear: 1991,
   job: "teacher",
   friends: ["Michael", "Peter", "Steven"],
+  hasDriversLicense: true,
+
+  //   calcAge: function (birthyear) {
+  //     return 2037 - birthyear;
+  //   },
+  //   calcAge: function () {
+  //     return 2037 - this.birthyear; //'this' gives us access to the object on which  this method is called. more on it later
+  //   },
+  calcAge: function () {
+    this.age = 2037 - this.birthyear;
+    return this.age;
+  },
+  getSummary: function () {
+    return `${this.firstName} is a ${this.age} year old ${
+      this.job
+    } and he has ${this.hasDriversLicense ? "a" : "no"} drivers license`;
+  },
 };
 
-// DOT NOTATION
-console.log(jonas.lastName);
-console.log(jonas["lastName"]); //main difference here is that with bracket notation you can put any EXPRESSION that you would like. ie you can compute the value from some operation
-
-const namekey = "Name";
-console.log(jonas["first" + namekey]);
-console.log(jonas["last" + namekey]);
-
-const interestedIn = prompt(
-  "What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends"
-);
-if (jonas[interestedIn]) {
-  console.log(jonas[interestedIn]);
-} else {
-  console.log(
-    "Wrong request! Choose between firstName, lastName, age, job, and friends"
-  );
-}
-
-jonas.location = "Portugal";
-jonas["twitter"] = "@jonasschmedtmann";
-console.log(jonas);
+// console.log(jonas.calcAge(1991));
+// console.log(jonas["calcAge"](1991));
+console.log(jonas.calcAge());
+console.log(jonas.age);
 
 //CHALLENGE
-//programatically write: 'Jonas has 3 friends and his best friend is called Michael'
-console.log(
-  `${jonas.firstName} has ${jonas.friends.length} friends and his best friend is called ${jonas.friends[0]}.`
-);
+//compute using a method: 'Jonas is a 46-year old teacher and he has a drivers license
+console.log(jonas.getSummary());
