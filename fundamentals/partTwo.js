@@ -418,18 +418,65 @@ TEST DATA: Mark weights 78kg and is 1.69m tall. John weights 92kg and is 1.95m t
 //
 //====== ITERATION: THE FOR LOOP =======
 //
-console.log("Lifting wieghts repitition: 1");
-console.log("Lifting wieghts repitition: 2");
-console.log("Lifting wieghts repitition: 3");
-console.log("Lifting wieghts repitition: 4");
-console.log("Lifting wieghts repitition: 5");
-console.log("Lifting wieghts repitition: 6");
-console.log("Lifting wieghts repitition: 7");
-console.log("Lifting wieghts repitition: 8");
-console.log("Lifting wieghts repitition: 9");
-console.log("Lifting wieghts repitition: 10");
+//without loops:
+// console.log("Lifting wieghts repitition: 1");
+// console.log("Lifting wieghts repitition: 2");
+// console.log("Lifting wieghts repitition: 3");
+// console.log("Lifting wieghts repitition: 4");
+// console.log("Lifting wieghts repitition: 5");
+// console.log("Lifting wieghts repitition: 6");
+// console.log("Lifting wieghts repitition: 7");
+// console.log("Lifting wieghts repitition: 8");
+// console.log("Lifting wieghts repitition: 9");
+// console.log("Lifting wieghts repitition: 10");
 
 //for loops keep running while the condition is true
-for (let rep = 1; rep <= 10; rep++) {
-  console.log(`Lifting weights repitition: ${rep}`);
+// for (let rep = 1; rep <= 10; rep++) {
+//   console.log(`Lifting weights repitition: ${rep}`);
+// }
+
+//
+//======= LOOPING ARRAYS: BREAKING AND CONTINUING =======
+//
+const jonas = [
+  "Jonas",
+  "Schmedtmann",
+  2037 - 1991,
+  "teacher",
+  ["Michael", "Peter", "Steven"],
+  true,
+];
+const types = [];
+
+for (let i = 0; i < jonas.length; i++) {
+  console.log(jonas[i], typeof jonas[i]);
+
+  //   types[i] = typeof jonas[i];
+  types.push(typeof jonas[i]);
+}
+console.log(types);
+
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+  ages.push(2037 - years[i]);
+}
+console.log(ages);
+
+// continue and break
+//continue: exit the current iteration and continue to the next
+//break: exit the entire loop
+console.log("---ONLY STRINGS---");
+for (let i = 0; i < jonas.length; i++) {
+  if (typeof jonas[i] !== "string") continue;
+  //all we want to do is log strings, else we skip it
+  console.log(jonas[i], typeof jonas[i]);
+}
+
+console.log("---BREAK WITH NUMBER---");
+for (let i = 0; i < jonas.length; i++) {
+  if (typeof jonas[i] === "number") break;
+  //all we want to do is log strings, else we skip it
+  console.log(jonas[i], typeof jonas[i]);
 }
