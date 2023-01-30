@@ -223,33 +223,67 @@ TEST DATA 2: Dolphins score 85, 54 and 41. Koalas score 23, 34 and 27
 //
 // array methods: built in functions you can call on arrays
 
-//add elements to the end
-const friends = ["Michael", "Steven", "Peter"];
-const newLength = friends.push("Jay");
-console.log(friends);
-console.log(newLength);
+// //add elements to the end
+// const friends = ["Michael", "Steven", "Peter"];
+// const newLength = friends.push("Jay");
+// console.log(friends);
+// console.log(newLength);
 
-//add element to the beginning
-friends.unshift("Jon");
-console.log(friends);
+// //add element to the beginning
+// friends.unshift("Jon");
+// console.log(friends);
 
-//remove elements from the end of the array
-friends.pop(); //removes the last element
-const popped = friends.pop();
-console.log(popped);
-console.log(friends);
+// //remove elements from the end of the array
+// friends.pop(); //removes the last element
+// const popped = friends.pop();
+// console.log(popped);
+// console.log(friends);
 
-//remove the first element from the array
-friends.shift();
-console.log(friends);
+// //remove the first element from the array
+// friends.shift();
+// console.log(friends);
 
-console.log(friends.indexOf("Steven"));
-console.log(friends.indexOf("Bob")); //if you dont have an element you'll get a -1
+// console.log(friends.indexOf("Steven"));
+// console.log(friends.indexOf("Bob")); //if you dont have an element you'll get a -1
 
-console.log(friends.includes("Steven")); //returns a boolean based on if the element is in the array
-console.log(friends.includes("bob"));
+// console.log(friends.includes("Steven")); //returns a boolean based on if the element is in the array
+// console.log(friends.includes("bob"));
 
-if (friends.includes("Peter")) {
-  //includes returns a boolean, which you can use for logical operators
-  console.log("You have a friend named Peter");
-}
+// if (friends.includes("Peter")) {
+//   //includes returns a boolean, which you can use for logical operators
+//   console.log("You have a friend named Peter");
+// }
+
+////////////////////////////////////
+//======= CODING CHALLENGE 2 =======
+////////////////////////////////////
+
+/*
+Steven is still building his tip calculator, using the same rules as before: Tip 15% of the bill if the value is betwenn 50 and 300, otherwise tip 20%.
+
+1. Write a function 'calcTip' that takes any bill value as an input and returns the corresponding tip, calculated based on the rules above (you can check out the code from the first challenge if you need to). Use the function type you like the most. Test the function using a test value of 100.
+2. And now lets use arrays! Create an array called 'bills' containing the test data below.
+3. Create an array 'tips' containing the tip value for each bill, calculated from the function before.
+4. BONUS: Create an array called 'total' containing the total values, so bill + tip.
+
+TEST DATA: 125, 555, and 44
+*/
+// const calcTip = (bill) => {
+//   if (bill >= 50 && bill <= 300) {
+//     return bill + bill * 0.15;
+//   } else {
+//     return bill + bill * 0.2;
+//   }
+// };
+// const calcTip = (bill) =>
+//   bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+// // console.log(calcTip(100));
+// // console.log(calcTip(500));
+
+// const bills = [125, 555, 44];
+// const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+// const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+
+// console.log(bills, tips, totals);
+
+////////////////////////////////////
