@@ -438,6 +438,52 @@ TEST DATA: Mark weights 78kg and is 1.69m tall. John weights 92kg and is 1.95m t
 //
 //======= LOOPING ARRAYS: BREAKING AND CONTINUING =======
 //
+// const jonas = [
+//   "Jonas",
+//   "Schmedtmann",
+//   2037 - 1991,
+//   "teacher",
+//   ["Michael", "Peter", "Steven"],
+//   true,
+// ];
+// const types = [];
+
+// for (let i = 0; i < jonas.length; i++) {
+//   console.log(jonas[i], typeof jonas[i]);
+
+//   //   types[i] = typeof jonas[i];
+//   types.push(typeof jonas[i]);
+// }
+// console.log(types);
+
+// const years = [1991, 2007, 1969, 2020];
+// const ages = [];
+
+// for (let i = 0; i < years.length; i++) {
+//   ages.push(2037 - years[i]);
+// }
+// console.log(ages);
+
+// // continue and break
+// //continue: exit the current iteration and continue to the next
+// //break: exit the entire loop
+// console.log("---ONLY STRINGS---");
+// for (let i = 0; i < jonas.length; i++) {
+//   if (typeof jonas[i] !== "string") continue;
+//   //all we want to do is log strings, else we skip it
+//   console.log(jonas[i], typeof jonas[i]);
+// }
+
+// console.log("---BREAK WITH NUMBER---");
+// for (let i = 0; i < jonas.length; i++) {
+//   if (typeof jonas[i] === "number") break;
+//   //all we want to do is log strings, else we skip it
+//   console.log(jonas[i], typeof jonas[i]);
+// }
+
+//
+//======= LOOPING BACKWARDS AND LOOPS IN LOOPS =======
+//
 const jonas = [
   "Jonas",
   "Schmedtmann",
@@ -446,37 +492,15 @@ const jonas = [
   ["Michael", "Peter", "Steven"],
   true,
 ];
-const types = [];
 
-for (let i = 0; i < jonas.length; i++) {
-  console.log(jonas[i], typeof jonas[i]);
-
-  //   types[i] = typeof jonas[i];
-  types.push(typeof jonas[i]);
-}
-console.log(types);
-
-const years = [1991, 2007, 1969, 2020];
-const ages = [];
-
-for (let i = 0; i < years.length; i++) {
-  ages.push(2037 - years[i]);
-}
-console.log(ages);
-
-// continue and break
-//continue: exit the current iteration and continue to the next
-//break: exit the entire loop
-console.log("---ONLY STRINGS---");
-for (let i = 0; i < jonas.length; i++) {
-  if (typeof jonas[i] !== "string") continue;
-  //all we want to do is log strings, else we skip it
-  console.log(jonas[i], typeof jonas[i]);
+for (let i = jonas.length - 1; i <= 0; i--) {
+  console.log(i, jonas[i]);
 }
 
-console.log("---BREAK WITH NUMBER---");
-for (let i = 0; i < jonas.length; i++) {
-  if (typeof jonas[i] === "number") break;
-  //all we want to do is log strings, else we skip it
-  console.log(jonas[i], typeof jonas[i]);
+//nested loops
+for (let exercise = 1; exercise <= 3; exercise++) {
+  console.log(`---Starting Exercise ${exercise}---`);
+  for (let rep = 1; rep < 6; rep++) {
+    console.log(`Lifting weights repetition ${rep}`);
+  }
 }
