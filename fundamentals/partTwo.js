@@ -484,23 +484,46 @@ TEST DATA: Mark weights 78kg and is 1.69m tall. John weights 92kg and is 1.95m t
 //
 //======= LOOPING BACKWARDS AND LOOPS IN LOOPS =======
 //
-const jonas = [
-  "Jonas",
-  "Schmedtmann",
-  2037 - 1991,
-  "teacher",
-  ["Michael", "Peter", "Steven"],
-  true,
-];
+// const jonas = [
+//   "Jonas",
+//   "Schmedtmann",
+//   2037 - 1991,
+//   "teacher",
+//   ["Michael", "Peter", "Steven"],
+//   true,
+// ];
 
-for (let i = jonas.length - 1; i <= 0; i--) {
-  console.log(i, jonas[i]);
-}
+// for (let i = jonas.length - 1; i <= 0; i--) {
+//   console.log(i, jonas[i]);
+// }
 
-//nested loops
-for (let exercise = 1; exercise <= 3; exercise++) {
-  console.log(`---Starting Exercise ${exercise}---`);
-  for (let rep = 1; rep < 6; rep++) {
-    console.log(`Lifting weights repetition ${rep}`);
-  }
+// //nested loops
+// for (let exercise = 1; exercise <= 3; exercise++) {
+//   console.log(`---Starting Exercise ${exercise}---`);
+//   for (let rep = 1; rep < 6; rep++) {
+//     console.log(`Lifting weights repetition ${rep}`);
+//   }
+// }
+
+//
+//======= THE WHILE LOOP =======
+//
+
+// for (let rep = 1; rep <= 10; rep++) {
+//   console.log(`Lifting weights repetition ${rep}`);
+// }
+
+// let rep = 1;
+// while (rep <= 10) {
+//   console.log(`Lifting weights repetition ${rep}`);
+//   rep++;
+// }
+//while loops are good when you dont know how many times the loop needs to run
+let dice = Math.trunc(Math.random() * 6) + 1;
+console.log(dice);
+
+while (dice !== 6) {
+  console.log(`you rolled  a ${dice}`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+  if (dice === 6) console.log("the loop is about to end");
 }
