@@ -173,47 +173,83 @@ TEST DATA 2: Dolphins score 85, 54 and 41. Koalas score 23, 34 and 27
 //
 //======= INTRO TO ARRAYS =======
 //
-const friend1 = "Michael";
-const friend2 = "Steven";
-const friend3 = "Peter";
+// const friend1 = "Michael";
+// const friend2 = "Steven";
+// const friend3 = "Peter";
 
+// const friends = ["Michael", "Steven", "Peter"];
+// console.log(friends);
+
+// const y = new Array(1991, 1984, 2008, 2020);
+
+// console.log(friends[0]);
+// console.log(friends[2]);
+// console.log(friends.length);
+// console.log(friends.length - 1);
+// //remember, expressions are anything that produces a value
+
+// //only primitive values are immutable, you can mutate arrays even if they are declared with const
+// friends[2] = "Jay";
+// console.log(friends);
+// // friends = ['bob', 'alice'] // here, you cant redo the entire array, just specific indicies
+
+// const firstName = "Jonas";
+// const jonas = [firstName, "Schmedtmann", 2037 - 1991, "teacher", [friends]];
+// console.log(jonas);
+
+// //exercise
+// const calcAge = function (birthyear) {
+//   return 2037 - birthyear;
+// };
+// const years = [1990, 1967, 2002, 2010, 2018];
+// calcAge(years); // ?, the function doesnt know how to handle an array since it was programmed with a number
+// console.log(years + 10, years - 10); // you cant do calculations on arrays outright, but you can do them on individual elements (you need to iterate through arrays)
+
+// const age1 = calcAge(years[0]);
+// const age2 = calcAge(years[1]);
+// const age3 = calcAge(years.length - 1);
+// console.log(age1, age2, age3);
+
+// //each index just needs to be an expression
+// const ages = [
+//   calcAge(years[0]),
+//   calcAge(years[1]),
+//   calcAge(years[years.length - 1]),
+// ];
+// console.log(ages);
+
+//
+//====== ARRAY OPERATIONS (METHODS) =======
+//
+// array methods: built in functions you can call on arrays
+
+//add elements to the end
 const friends = ["Michael", "Steven", "Peter"];
+const newLength = friends.push("Jay");
+console.log(friends);
+console.log(newLength);
+
+//add element to the beginning
+friends.unshift("Jon");
 console.log(friends);
 
-const y = new Array(1991, 1984, 2008, 2020);
-
-console.log(friends[0]);
-console.log(friends[2]);
-console.log(friends.length);
-console.log(friends.length - 1);
-//remember, expressions are anything that produces a value
-
-//only primitive values are immutable, you can mutate arrays even if they are declared with const
-friends[2] = "Jay";
+//remove elements from the end of the array
+friends.pop(); //removes the last element
+const popped = friends.pop();
+console.log(popped);
 console.log(friends);
-// friends = ['bob', 'alice'] // here, you cant redo the entire array, just specific indicies
 
-const firstName = "Jonas";
-const jonas = [firstName, "Schmedtmann", 2037 - 1991, "teacher", [friends]];
-console.log(jonas);
+//remove the first element from the array
+friends.shift();
+console.log(friends);
 
-//exercise
-const calcAge = function (birthyear) {
-  return 2037 - birthyear;
-};
-const years = [1990, 1967, 2002, 2010, 2018];
-calcAge(years); // ?, the function doesnt know how to handle an array since it was programmed with a number
-console.log(years + 10, years - 10); // you cant do calculations on arrays outright, but you can do them on individual elements (you need to iterate through arrays)
+console.log(friends.indexOf("Steven"));
+console.log(friends.indexOf("Bob")); //if you dont have an element you'll get a -1
 
-const age1 = calcAge(years[0]);
-const age2 = calcAge(years[1]);
-const age3 = calcAge(years.length - 1);
-console.log(age1, age2, age3);
+console.log(friends.includes("Steven")); //returns a boolean based on if the element is in the array
+console.log(friends.includes("bob"));
 
-//each index just needs to be an expression
-const ages = [
-  calcAge(years[0]),
-  calcAge(years[1]),
-  calcAge(years[years.length - 1]),
-];
-console.log(ages);
+if (friends.includes("Peter")) {
+  //includes returns a boolean, which you can use for logical operators
+  console.log("You have a friend named Peter");
+}
