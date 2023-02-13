@@ -74,3 +74,17 @@ minus the country's population)
 population > averagePop
   ? console.log(`${country}'s population is above average`)
   : console.log(`${country}'s population is ${averagePop - population}`);
+
+/*
+  LECTURE: Type Conversion and Coercion
+    1. Predict the result of these 5 operations without executing them:
+    '9' - '5';
+    '19' - '13' + '17';
+    '19' - '13' + 17;
+    '123' < 57;
+    5 + 6 + '4' + 9 - 4 - 2;
+    2. Execute the operations to check if you were right
+  */
+//4, 617, 23, false, 117
+//correct, correct, correct, correct,
+//last one evaluates to 1143, 5 + 6 becomes 11, then '114' but the interesting thing is having the 9 tack on to the string to make '1149' then have it return to math and a number at 1145 then 1143. really cool!
