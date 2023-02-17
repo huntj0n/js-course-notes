@@ -42,3 +42,12 @@ const percentageOfWorld2 = function (population) {
 };
 let popPerChina2 = percentageOfWorld2(1441);
 console.log(popPerChina2);
+
+/*
+LECTURE: Arrow Functions
+    1. Recreate the last assignment, but this time create an arrow function called
+    'percentageOfWorld3'
+*/
+const percentageOfWorld3 = (population) => (population / 7900) * 100;
+let popPerChina3 = percentageOfWorld3(1441);
+console.log(popPerChina3);
