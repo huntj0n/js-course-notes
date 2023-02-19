@@ -114,3 +114,18 @@ if (!neighbors.includes("Germany"))
   console.log("Probably not a central European country :D");
 neighbors[neighbors.indexOf("Mexico")] = "mexico";
 console.log(neighbors);
+
+/*
+LECTURE: Introduction to Objects
+    1. Create an object called 'myCountry' for a country of your choice, containing
+    properties 'country', 'capital', 'language', 'population' and
+    'neighbours' (an array like we used in previous assignments)
+*/
+const myCountry = {
+  country: "USA",
+  capital: "Washington DC",
+  language: "English",
+  population: "350 Million",
+  neighbors: neighbors,
+};
+console.log(myCountry);
