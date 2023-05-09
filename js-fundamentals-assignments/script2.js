@@ -121,14 +121,14 @@ LECTURE: Introduction to Objects
     properties 'country', 'capital', 'language', 'population' and
     'neighbours' (an array like we used in previous assignments)
 */
-const myCountry = {
-  country: "USA",
-  capital: "Washington DC",
-  language: "English",
-  population: 350,
-  neighbors: neighbors,
-};
-console.log(myCountry);
+// const myCountry = {
+//   country: "USA",
+//   capital: "Washington DC",
+//   language: "English",
+//   population: 350,
+//   neighbors: neighbors,
+// };
+// console.log(myCountry);
 
 /*
 LECTURE: Dot vs. Bracket Notation
@@ -157,3 +157,14 @@ method will set a new property on the object, called 'isIsland'.
 'isIsland' will be true if there are no neighbouring countries, and false if
 there are. Use the ternary operator to set the property.
 */
+const myCountry = {
+  country: "USA",
+  capital: "Washington DC",
+  language: "English",
+  population: 350,
+  neighbors: neighbors,
+  describe: function () {
+    console.log();
+  },
+};
+console.log(myCountry);
