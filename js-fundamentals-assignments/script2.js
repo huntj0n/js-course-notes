@@ -79,13 +79,13 @@ LECTURE: Introduction to Arrays
     'percentageOfWorld1' that you created earlier to compute the 4
     percentage values
 */
-const populations = [1441, 350, 55, 6];
-console.log(populations.length === 4);
-const percentages = [];
-for (i = 0; i <= populations.length; i++) {
-  percentages.push(percentageOfWorld2(i));
-}
-console.log(populations, percentages);
+// const populations = [1441, 350, 55, 6];
+// console.log(populations.length === 4);
+// const percentages = [];
+// for (i = 0; i <= populations.length; i++) {
+//   percentages.push(percentageOfWorld2(i));
+// }
+// console.log(populations, percentages);
 
 /*
 LECTURE: Basic Array Operations (Methods)
@@ -175,9 +175,9 @@ LECTURE: Iteration: the For Loop
 Use a for loop to simulate the 50 people voting, by logging a string like this to
 the console (for numbers 1 to 50): 'Voter number 1 is currently voting' 
 */
-for (let voter = 0; voter <= 50; voter++) {
-  console.log(`Voter number ${voter} has voted`);
-}
+// for (let voter = 0; voter <= 50; voter++) {
+//   console.log(`Voter number ${voter} has voted`);
+// }
 
 /* 
 LECTURE: Looping Arrays, Breaking and Continuing
@@ -190,3 +190,12 @@ function 'percentageOfWorld1' that you created earlier
 'percentages' array that we created manually in the previous assignment,
 and reflect on how much better this solution is
 */
+const populations = [1441, 350, 55, 6];
+const populationOfWorld = 8000;
+const percentages2 = [];
+
+for (let percent = 0; percent < populations.length - 1; percent++) {
+  percentages2.push((populations[percent] / populationOfWorld) * 100);
+}
+
+console.log(percentages2);
