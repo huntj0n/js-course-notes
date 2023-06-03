@@ -190,15 +190,15 @@ function 'percentageOfWorld1' that you created earlier
 'percentages' array that we created manually in the previous assignment,
 and reflect on how much better this solution is
 */
-const populations = [1441, 350, 55, 6];
-const populationOfWorld = 8000;
-const percentages2 = [];
+// const populations = [1441, 350, 55, 6];
+// const populationOfWorld = 8000;
+// const percentages2 = [];
 
-for (let percent = 0; percent < populations.length - 1; percent++) {
-  percentages2.push((populations[percent] / populationOfWorld) * 100);
-}
+// for (let percent = 0; percent < populations.length - 1; percent++) {
+//   percentages2.push((populations[percent] / populationOfWorld) * 100);
+// }
 
-console.log(percentages2);
+// console.log(percentages2);
 
 /*
 LECTURE: Looping Backwards and Loops in Loops
@@ -210,18 +210,36 @@ arrays. Log a string like 'Neighbour: Canada' for each country
 3. You will need a loop inside a loop for this. This is actually a bit tricky, so don't
 worry if it's too difficult for you! But you can still try to figure this out anyway �
 */
-const listOfNeighbours = [
-  ["Canada", "Mexico"],
-  ["Spain"],
-  ["Norway", "Sweden", "Russia"],
-];
+// const listOfNeighbours = [
+//   ["Canada", "Mexico"],
+//   ["Spain"],
+//   ["Norway", "Sweden", "Russia"],
+// ];
 
-for (let n = 0; n < listOfNeighbours.length; n++) {
-  if (listOfNeighbours[n].length > 1) {
-    let arr = [];
-    for (neybor = 0; neybor < listOfNeighbours[n].length; neybor++) {
-      arr.push(listOfNeighbours[n][neybor]);
-    }
-    console.log(arr);
-  }
+// for (let n = 0; n < listOfNeighbours.length; n++) {
+//   if (listOfNeighbours[n].length > 1) {
+//     let arr = [];
+//     for (neybor = 0; neybor < listOfNeighbours[n].length; neybor++) {
+//       arr.push(listOfNeighbours[n][neybor]);
+//     }
+//     console.log(arr);
+//   }
+// }
+
+/*
+LECTURE: The while Loop
+1. Recreate the challenge from the lecture 'Looping Arrays, Breaking and Continuing',
+but this time using a while loop (call the array 'percentages3')
+2. Reflect on what solution you like better for this task: the for loop or the while
+loop?
+*/
+
+const percentages3 = [];
+const populations = [1441, 350, 55, 6];
+const populationOfWorld = 8000;
+
+let rep = 1;
+while (rep <= populations.length) {
+  percentages3.push((populations[rep] / populationOfWorld) * 100);
+  rep++;
 }
