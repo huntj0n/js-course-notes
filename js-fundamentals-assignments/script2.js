@@ -234,12 +234,12 @@ but this time using a while loop (call the array 'percentages3')
 loop?
 */
 
-const percentages3 = [];
-const populations = [1441, 350, 55, 6];
-const populationOfWorld = 8000;
+// const percentages3 = [];
+// const populations = [1441, 350, 55, 6];
+// const populationOfWorld = 8000;
 
-let rep = 1;
-while (rep <= populations.length) {
-  percentages3.push((populations[rep] / populationOfWorld) * 100);
-  rep++;
-}
+// let rep = 1;
+// while (rep <= populations.length) {
+//   percentages3.push((populations[rep] / populationOfWorld) * 100);
+//   rep++;
+// }
