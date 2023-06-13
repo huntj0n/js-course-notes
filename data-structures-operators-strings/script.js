@@ -25,7 +25,20 @@ const restaurant = {
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.starterMenu[mainIndex]];
   },
+
+  orderDelivery: function (obj) {
+    console.log(
+      `order recieved: ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
 };
+
+restaurant.orderDelivery({
+  time: "22.30",
+  address: "Via del Sol 21",
+  mainIndex: 2,
+  starterIndex: 2,
+});
 
 //----- DESTRUCTURING ARRAYS -----//
 // const arr = [2, 3, 4];
@@ -84,3 +97,9 @@ let b = 999;
 const obj = { a: 23, b: 7, c: 14 };
 ({ a, b } = obj);
 console.log(a, b);
+
+//nested objects
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+console.log(o, c);
