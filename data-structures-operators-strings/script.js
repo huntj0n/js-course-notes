@@ -43,6 +43,42 @@ const restaurant = {
   },
 };
 
+//-----LOGICAL ASSIGNMENT OPERATORS-----
+const rest1 = {
+  name: "Capri",
+  numGuests: 20,
+};
+const rest2 = {
+  name: "La Piazza",
+  owner: "Giovanni Rossi",
+};
+
+//--- OR assignment operator
+// what the OR assignment operator assigns a value to a variable IF that variable is currently falsy
+
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+
+//---NULLISH coalescing assignment operator (null or undefined)
+//here we can basically do that same thing as the OR operator but it will work in case its 0
+// the nullish operator will assign a value to a variable if that exact variable is currently nullish
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+//---AND logical assignment operator
+// rest1.owner = rest1.owner && '<ANONYMOUS>';
+// rest2.owner = rest2.owner && '<ANONYMOUS>';
+
+rest1.owner &&= "<ANONYMOUS>";
+rest2.owner &&= "<ANONYMOUS>";
+
+console.log(rest1);
+console.log(rest2);
+
+/*
 //-----THE NULLISH COALESCING OPERATOR (??)-----
 restaurant.numGuests = 0;
 const guests = restaurant.numGuests ? restaurant.numGuests : 10;
@@ -240,3 +276,5 @@ console.log(guestsCorrect);
 //   fri: { open: o, close: c },
 // } = openingHours;
 // console.log(o, c);
+
+*/
