@@ -43,38 +43,47 @@ const restaurant = {
   },
 };
 
+//-----THE NULLISH COALESCING OPERATOR (??)-----
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+//Nullish: null and undfined (NOT 0 or '')
+const guestsCorrect = restaurant.numGuests ?? 10;
+console.log(guestsCorrect);
+
 //-----SHORT CIRCUITING (&& AND ||)
 
 //logical operators can use any data type, they cann return any data type, and they do something called short curcuiting or short circuit evaluation
 
 //OR: will return the first 'truthy' value. if its the first javascript doesnt even look at the second
-console.log(3 || "Jonas"); //3
-console.log(0 || "Jonas"); //'Jonas'
-console.log("" || "Jonas"); //'Jonas'
-console.log(true || 0); //true
-console.log(undefined || null || 0 || "" || "Hello" || 23); //'Hello'
+// console.log(3 || "Jonas"); //3
+// console.log(0 || "Jonas"); //'Jonas'
+// console.log("" || "Jonas"); //'Jonas'
+// console.log(true || 0); //true
+// console.log(undefined || null || 0 || "" || "Hello" || 23); //'Hello'
 
-const guests1 = restaurant.numGuests
-  ? restaurant.numGuests || restaurant.numGuests
-  : 10;
-console.log(guests1);
+// const guests1 = restaurant.numGuests
+//   ? restaurant.numGuests || restaurant.numGuests
+//   : 10;
+// console.log(guests1);
 
-const guests2 = restaurant.numGuests || 10;
-console.log(guests2);
+// const guests2 = restaurant.numGuests || 10;
+// console.log(guests2);
 
-//AND short circuits when the first value is falsy and then returns that falsy value without even considering the next value, meaning it returns the first falsy value
-console.log("---- AND ----");
-console.log(0 && "Jonas"); //here it will return the first falsy value
-console.log(7 && "Jonas"); //here, since both are truthy, the last value is returned
-console.log("hello" && 23 && null && "jonas"); //here, it will return null, the first falsy value
+// //AND short circuits when the first value is falsy and then returns that falsy value without even considering the next value, meaning it returns the first falsy value
+// console.log("---- AND ----");
+// console.log(0 && "Jonas"); //here it will return the first falsy value
+// console.log(7 && "Jonas"); //here, since both are truthy, the last value is returned
+// console.log("hello" && 23 && null && "jonas"); //here, it will return null, the first falsy value
 
-if (restaurant.orderPizza) {
-  restaurant.orderPizza("mushrooms", "spinach");
-}
-//you can use the && short circuit to evaluate if a certain property exists. if it does, only then do we execute it. essentially in the same way as the if block above does it
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza("mushrooms", "spinach");
+// }
+// //you can use the && short circuit to evaluate if a certain property exists. if it does, only then do we execute it. essentially in the same way as the if block above does it
 
-restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
-/////
+// restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
+// /////
 
 // restaurant.orderDelivery({
 //   time: "22.30",
