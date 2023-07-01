@@ -43,46 +43,79 @@ const restaurant = {
   },
 };
 
-restaurant.orderDelivery({
-  time: "22.30",
-  address: "Via del Sol 21",
-  mainIndex: 2,
-  starterIndex: 2,
-});
+//-----SHORT CIRCUITING (&& AND ||)
 
-restaurant.orderPizza("mushrooms", "onion", "olives", "spinach");
-restaurant.orderPizza("pepperoni");
+//logical operators can use any data type, they cann return any data type, and they do something called short curcuiting or short circuit evaluation
 
-//---REST PATTERN AND PARAMETERS-----
-//does the opposite of the spread operator: which was build new arrays, and pass mutiple arguments into a function. In both cases we use it to extend an array into individual elements. The rest pattenr uses the same syntax but to collect multiple elements into an array..
-//spread = on the right side of the assignment operator
-const arr = [1, 2, ...[3, 4]];
-//rest = because its on the left side of the assignment operator
-const [a, b, ...others] = [2, 3, 4, 5];
-console.log(a, b, others);
+//OR: will return the first 'truthy' value. if its the first javascript doesnt even look at the second
+console.log(3 || "Jonas"); //3
+console.log(0 || "Jonas"); //'Jonas'
+console.log("" || "Jonas"); //'Jonas'
+console.log(true || 0); //true
+console.log(undefined || null || 0 || "" || "Hello" || 23); //'Hello'
 
-const [pizza, , risotto, ...otherFood] = [
-  ...restaurant.mainMenu,
-  ...restaurant.starterMenu,
-];
-console.log(pizza, risotto, otherFood);
-//notice that the rest operator picks up all elements after the last named variable... the REST of them, it didnt pick up the skipped element above. So you need to make sure that the REST pattern is used at the end and there can only be one rest in any given assignment
+const guests1 = restaurant.numGuests
+  ? restaurant.numGuests || restaurant.numGuests
+  : 10;
+console.log(guests1);
 
-//Objects
-const { sat, ...weekdays } = restaurant.openingHours;
-console.log(weekdays);
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
 
-//2) Functions
-const add = function (...numbers) {
-  //using the rest pattern here allows the function to accept an array and all the single values like things are written below
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
-  console.log(sum);
-};
+//AND short circuits when the first value is falsy and then returns that falsy value without even considering the next value, meaning it returns the first falsy value
+console.log("---- AND ----");
+console.log(0 && "Jonas"); //here it will return the first falsy value
+console.log(7 && "Jonas"); //here, since both are truthy, the last value is returned
+console.log("hello" && 23 && null && "jonas"); //here, it will return null, the first falsy value
 
-add(2, 3);
-add(5, 3, 7, 2);
-add(8, 2, 5, 3, 2, 1, 4);
+if (restaurant.orderPizza) {
+  restaurant.orderPizza("mushrooms", "spinach");
+}
+//you can use the && short circuit to evaluate if a certain property exists. if it does, only then do we execute it. essentially in the same way as the if block above does it
+
+restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
+/////
+
+// restaurant.orderDelivery({
+//   time: "22.30",
+//   address: "Via del Sol 21",
+//   mainIndex: 2,
+//   starterIndex: 2,
+// });
+
+// restaurant.orderPizza("mushrooms", "onion", "olives", "spinach");
+// restaurant.orderPizza("pepperoni");
+
+// //---REST PATTERN AND PARAMETERS-----
+// //does the opposite of the spread operator: which was build new arrays, and pass mutiple arguments into a function. In both cases we use it to extend an array into individual elements. The rest pattenr uses the same syntax but to collect multiple elements into an array..
+// //spread = on the right side of the assignment operator
+// const arr = [1, 2, ...[3, 4]];
+// //rest = because its on the left side of the assignment operator
+// const [a, b, ...others] = [2, 3, 4, 5];
+// console.log(a, b, others);
+
+// const [pizza, , risotto, ...otherFood] = [
+//   ...restaurant.mainMenu,
+//   ...restaurant.starterMenu,
+// ];
+// console.log(pizza, risotto, otherFood);
+// //notice that the rest operator picks up all elements after the last named variable... the REST of them, it didnt pick up the skipped element above. So you need to make sure that the REST pattern is used at the end and there can only be one rest in any given assignment
+
+// //Objects
+// const { sat, ...weekdays } = restaurant.openingHours;
+// console.log(weekdays);
+
+// //2) Functions
+// const add = function (...numbers) {
+//   //using the rest pattern here allows the function to accept an array and all the single values like things are written below
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+//   console.log(sum);
+// };
+
+// add(2, 3);
+// add(5, 3, 7, 2);
+// add(8, 2, 5, 3, 2, 1, 4);
 //rest arguments = (the numbers above)
 //with rest we compress, with the spread we expand
 
