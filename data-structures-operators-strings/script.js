@@ -107,6 +107,43 @@ const game = {
     team2: 6.5,
   },
 };
+
+//-----SETS-----
+//common data structures that exist in other programming languages, introduced to JS with ES6.
+
+const ordersSet = new Set([
+  "Pasta",
+  "Pizza",
+  "Pizza",
+  "Risottt",
+  "Pasta",
+  "Pizza",
+]);
+console.log(ordersSet);
+
+console.log(new Set("Jonas"));
+
+console.log(ordersSet.size);
+console.log(ordersSet.has("Pizza"));
+console.log(ordersSet.has("Bread"));
+ordersSet.add("Garlic Bread");
+ordersSet.add("Garlic Bread");
+ordersSet.delete("Risotto");
+// ordersSet.clear()
+console.log(ordersSet);
+//you cant retrieve items out of a set but you can use them like any other iterabales
+
+for (const order of ordersSet) console.log(order);
+
+const staff = ["Waiter", "Chef", "waiter", "Manager", "Chef", "Waiter"];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+console.log(
+  new Set(["Waiter", "Chef", "waiter", "Manager", "Chef", "Waiter"].size)
+);
+
+////////////////////////////////
+//-----CODING CHALLENGE #2-----
 /*
 Your tasks:
 1. Loop over the game.scored array and print each player name to the console,
@@ -130,8 +167,36 @@ game, it will look like this:
 }
 */
 //1.
-for (const [i, player] of game.scored.entries())
-  console.log(`Goal ${i + 1}: ${player}`);
+// for (const [i, player] of game.scored.entries())
+//   console.log(`Goal ${i + 1}: ${player}`);
+
+//   //notice here how for an array (game.scored) you just need the .entries() method, for 3. you need an Object so you need to use the Object.entries() and then pass in the given object
+
+// //2.
+// const odds = Object.values(game.odds)
+// let average = 0
+// for(const odd of odds){
+//   average += odd;
+// }
+// average /= odds.length
+// console.log(average)
+
+// //3.
+// for(const [team, odd] of Object.entries(game.odds)){
+//   const teamStr = team === 'x' ? 'draw': `victory ${game[team]}`
+//   console.log(`Odd of ${teamStr} ${odd}`)
+// }
+// // Odd of victory Bayern Munich: 1.33
+// // Odd of draw: 3.25
+// // Odd of victory Borrussia Dortmund: 6.5
+
+// // BONUS
+// // So the solution is to loop over the array, and add the array elements as object properties, and then increase the count as we encounter a new occurence of a certain element
+// const scorers = {};
+// for (const player of game.scored) {
+//   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+// }
+///////////////////////////////////////////////////////
 
 //-----LOOPING OBJECTS: OBJECT KEYS, VALUES, AND ENTRIES-----
 //property NAMES
