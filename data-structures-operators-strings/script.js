@@ -65,6 +65,71 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+
+//-----MAPS-----
+//in JS, the other new data structure is a map. we use them to map values to keys. similar to objects. but with maps, keys can have any types rather than just strings. leads to some great and andvanced stuff
+
+const rest = new Map();
+rest.set("name", "Classico Italiano");
+rest.set(1, "Firenze, Italy");
+console.log(rest.set(2, "Lisbon, Portugal"));
+rest
+  .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+  .set("open", 11)
+  .set("close", 23)
+  .set(true, "We are open")
+  .set(false, "We are closed");
+
+console.log(rest.get("name"));
+console.log(rest.get(true));
+
+const time = 21;
+// const time = 8;
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+
+console.log(rest.has("categories"));
+rest.delete(2);
+// rest.clear();
+rest.set([1, 2], "Test");
+console.log(rest);
+console.log(rest.size);
+
+console.log(rest.get([1, 2])); //here, the array is NOT the same as the array we used in the rest.set method above. You need to change it to an external variable, then use the variable as the key to link them when retrieving information from the map.
+
+//-----SETS-----
+//common data structures that exist in other programming languages, introduced to JS with ES6.
+
+// const ordersSet = new Set([
+//   "Pasta",
+//   "Pizza",
+//   "Pizza",
+//   "Risottt",
+//   "Pasta",
+//   "Pizza",
+// ]);
+// console.log(ordersSet);
+
+// console.log(new Set("Jonas"));
+
+// console.log(ordersSet.size);
+// console.log(ordersSet.has("Pizza"));
+// console.log(ordersSet.has("Bread"));
+// ordersSet.add("Garlic Bread");
+// ordersSet.add("Garlic Bread");
+// ordersSet.delete("Risotto");
+// // ordersSet.clear()
+// console.log(ordersSet);
+// //you cant retrieve items out of a set but you can use them like any other iterabales
+
+// for (const order of ordersSet) console.log(order);
+
+// const staff = ["Waiter", "Chef", "waiter", "Manager", "Chef", "Waiter"];
+// const staffUnique = [...new Set(staff)];
+// console.log(staffUnique);
+// console.log(
+//   new Set(["Waiter", "Chef", "waiter", "Manager", "Chef", "Waiter"].size)
+// );
+
 /////////////////////////////////////////
 //----- CODING CHALLENGE #2 -----
 const game = {
@@ -108,42 +173,6 @@ const game = {
   },
 };
 
-//-----SETS-----
-//common data structures that exist in other programming languages, introduced to JS with ES6.
-
-const ordersSet = new Set([
-  "Pasta",
-  "Pizza",
-  "Pizza",
-  "Risottt",
-  "Pasta",
-  "Pizza",
-]);
-console.log(ordersSet);
-
-console.log(new Set("Jonas"));
-
-console.log(ordersSet.size);
-console.log(ordersSet.has("Pizza"));
-console.log(ordersSet.has("Bread"));
-ordersSet.add("Garlic Bread");
-ordersSet.add("Garlic Bread");
-ordersSet.delete("Risotto");
-// ordersSet.clear()
-console.log(ordersSet);
-//you cant retrieve items out of a set but you can use them like any other iterabales
-
-for (const order of ordersSet) console.log(order);
-
-const staff = ["Waiter", "Chef", "waiter", "Manager", "Chef", "Waiter"];
-const staffUnique = [...new Set(staff)];
-console.log(staffUnique);
-console.log(
-  new Set(["Waiter", "Chef", "waiter", "Manager", "Chef", "Waiter"].size)
-);
-
-////////////////////////////////
-//-----CODING CHALLENGE #2-----
 /*
 Your tasks:
 1. Loop over the game.scored array and print each player name to the console,
