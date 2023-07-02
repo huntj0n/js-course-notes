@@ -69,32 +69,71 @@ const restaurant = {
 //-----MAPS-----
 //in JS, the other new data structure is a map. we use them to map values to keys. similar to objects. but with maps, keys can have any types rather than just strings. leads to some great and andvanced stuff
 
-const rest = new Map();
-rest.set("name", "Classico Italiano");
-rest.set(1, "Firenze, Italy");
-console.log(rest.set(2, "Lisbon, Portugal"));
-rest
-  .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
-  .set("open", 11)
-  .set("close", 23)
-  .set(true, "We are open")
-  .set(false, "We are closed");
+//Map Iteration
+const question = new Map([
+  ["questions", "What is the best programming language in the world"],
+  [1, "C"],
+  [2, "Java"],
+  [3, "JavaScript"],
+  ["correct", 3],
+  [true, "Correct"][(false, "Try again")],
+]);
+console.log(question); //how this prints out is just like Object.entries(), which means that there is an easy way to convert from Maps to objects!
 
-console.log(rest.get("name"));
-console.log(rest.get(true));
+//convert object to map
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
 
-const time = 21;
-// const time = 8;
-console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+//maps are iterables!
 
-console.log(rest.has("categories"));
-rest.delete(2);
-// rest.clear();
-rest.set([1, 2], "Test");
-console.log(rest);
-console.log(rest.size);
+for (const [key, value] of question) {
+  if (typeof key === "number") console.log(`Answer ${key}: ${value}`);
+}
+const answer = 3;
+// const answer = Number(prompt("Your Answer"));
+console.log(answer);
 
-console.log(rest.get([1, 2])); //here, the array is NOT the same as the array we used in the rest.set method above. You need to change it to an external variable, then use the variable as the key to link them when retrieving information from the map.
+// if (answer === 3) {
+//   console.log(question.get(true));
+// } else console.log(question.get(false ));
+
+console.log(question.get(question.get("correct") === answer));
+
+//convert map to array
+console.log([...question]);
+//console.log(question.entries()) //will give you a wierd iterator, so you need to spread them here to get a new array without that iterator
+// console.log([...question.entries()]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
+
+//Map Fundamentals
+// const rest = new Map();
+// rest.set("name", "Classico Italiano");
+// rest.set(1, "Firenze, Italy");
+// console.log(rest.set(2, "Lisbon, Portugal"));
+// rest
+//   .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+//   .set("open", 11)
+//   .set("close", 23)
+//   .set(true, "We are open")
+//   .set(false, "We are closed");
+
+// console.log(rest.get("name"));
+// console.log(rest.get(true));
+
+// const time = 21;
+// // const time = 8;
+// console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+
+// console.log(rest.has("categories"));
+// rest.delete(2);
+// // rest.clear();
+// rest.set([1, 2], "Test");
+// console.log(rest);
+// console.log(rest.size);
+
+// console.log(rest.get([1, 2])); //here, the array is NOT the same as the array we used in the rest.set method above. You need to change it to an external variable, then use the variable as the key to link them when retrieving information from the map.
 
 //-----SETS-----
 //common data structures that exist in other programming languages, introduced to JS with ES6.
