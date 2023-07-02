@@ -66,6 +66,51 @@ const restaurant = {
   },
 };
 
+//-----WORKING WITH STRINGS: Part 1-----
+
+const airLine = "TAP Air Portugal";
+const plane = "A320";
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log("B737"[0]);
+
+console.log(airline.length);
+console.log("B737".length);
+
+console.log(airline.indexOf("r"));
+console.log(airline.lastIndexOf("r"));
+console.log(indedOf("Portugal")); //case sensitive
+console.log(indedOf("portugal")); //will return -1 since its case sensitive
+
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7)); //length here is end minus beginning
+
+console.log(airline.slice(0, airline.indexOf(" "))); //extract first word
+console.log(airline.slice(lastIndexOf(" ") + 1)); //extract last word without the last space
+console.log(airline.slice(-2)); // starting at the end
+console.log(airline.slice(1, -1)); // starting at the beginning but ending at the second to last
+
+const checkMiddleSeat = function (seat) {
+  //B and E are middle seats
+  const s = seat.slice(-1);
+  let str;
+  s === "B" || s === "E"
+    ? (str = "You got the middle seat")
+    : (str = "You got lucky!");
+  console.log(str);
+};
+checkMiddleSeat("11B");
+checkMiddleSeat("23C");
+checkMiddleSeat("3E");
+
+console.log(new String("jonas"));
+console.log(typeof new String("jonas"));
+console.log(typeof new String("jonas").slice(1));
+
+//a lot of these methods return a new string you can store in a variable and use later
+
 //////////////////////////////////////////////////////////
 //-----CODING CHALLENGE #3-----
 const gameEvents = new Map([
