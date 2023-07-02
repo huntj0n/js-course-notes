@@ -1,5 +1,21 @@
 "use strict";
 
+const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [`day-${2 + 4}`]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 const restaurant = {
   name: "Classico Italiano",
   location: "Via Angelo Tavanti 23, Firenze, Italy",
@@ -7,24 +23,31 @@ const restaurant = {
   starterMenu: ["Focacia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
   mainMenu: ["Pizza", "Pasta", "Risotto"],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+  openingHours,
 
-  order: function (starterIndex, mainIndex) {
+  // openingHours: {
+  //   thu: {
+  //     open: 12,
+  //     close: 22,
+  //   },
+  //   fri: {
+  //     open: 11,
+  //     close: 23,
+  //   },
+  //   sat: {
+  //     open: 0, // Open 24 hours
+  //     close: 24,
+  //   },
+  // },
+
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.starterMenu[mainIndex]];
   },
+  //this works the exact same wasy as the ones below
+
+  // order: function (starterIndex, mainIndex) {
+  //   return [this.starterMenu[starterIndex], this.starterMenu[mainIndex]];
+  // },
 
   orderDelivery: function (obj) {
     console.log(
@@ -43,17 +66,19 @@ const restaurant = {
   },
 };
 
-//-----LOOPING ARRAYS: THE FOR-OF LOOP-----
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+//-----ENHANCED OBJECT LITERALS-----
 
-for (const item of menu) console.log(item);
-//basically an abstraction from the regular for loop, built in counters and conditions essentially
-//you can still use the continue and break keywords here too
-//does make it harder to access the current index of the arra
-for (const [i, el] of menu.entries()) {
-  console.log(`${i + 1}: ${el}`);
-}
-console.log(...menu.entries());
+//-----LOOPING ARRAYS: THE FOR-OF LOOP-----
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+// for (const item of menu) console.log(item);
+// //basically an abstraction from the regular for loop, built in counters and conditions essentially
+// //you can still use the continue and break keywords here too
+// //does make it harder to access the current index of the arra
+// for (const [i, el] of menu.entries()) {
+//   console.log(`${i + 1}: ${el}`);
+// }
+// console.log(...menu.entries());
 
 /////////////////////////////////
 //-----CODING CHALLANGE #1-----
