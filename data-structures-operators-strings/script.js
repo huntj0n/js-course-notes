@@ -43,6 +43,110 @@ const restaurant = {
   },
 };
 
+//-----LOOPING ARRAYS: THE FOR-OF LOOP-----
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+//basically an abstraction from the regular for loop, built in counters and conditions essentially
+//you can still use the continue and break keywords here too
+//does make it harder to access the current index of the arra
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+console.log(...menu.entries());
+
+/////////////////////////////////
+//-----CODING CHALLANGE #1-----
+/*
+We're building a football betting app!
+
+suppose we get data from a web service about a certain game (below). In this challenge we're gonna weork with the data. so Here are you tasks:
+
+1. Create one player array for each team (variables 'players1' and 'players2')
+2. The first player in any player array is the foalkeeper and the others are field players. For Bayern Munich (team 1) create one variable ('gk') with the goalkeeprs name, and one array ('fieldPlayers') with all the remaining 10 field players
+3. Create an array 'allPlayers' containing all players of both teams (22 players)
+4. During the game, Bayern Munich(team 1) used 3 substitute players. So create a new array ('players1Final') containing all the original team1 players plus 'Thiago', 'Coutinho' and 'Perisic'
+5. Based on the game.odds object, create one variable for each odd (called 'team1', 'draw', 'team2')
+6. Write a function ('printGoals') that recieves an arbitrary number of player names (NOT an array) and prints each of them to the console, along with the number of goals who were scored (number of player names passed ins)
+7. The team with the lower odd is more likely to win. Print to the console which team is more likely to win, WITHOUT using an if/else statement or the ternary operator.
+
+TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with platers from game.scored
+*/
+// const game = {
+//   team1: "Bayern Munich",
+//   team2: "Borrusia Dortmund",
+//   players: [
+//     [
+//       "Neuer",
+//       "Pavard",
+//       "Martinez",
+//       "Alaba",
+//       "Davies",
+//       "Kimmich",
+//       "Goretzka",
+//       "Coman",
+//       "Muller",
+//       "Gnabry",
+//       "Lewandowski",
+//     ],
+//     [
+//       "Burki",
+//       "Schulz",
+//       "Hummels",
+//       "Akanji",
+//       "Hakimi",
+//       "Weigl",
+//       "Witsel",
+//       "Hazard",
+//       "Brandt",
+//       "Sancho",
+//       "Gotze",
+//     ],
+//   ],
+//   score: "4:0",
+//   scored: ["Lewandowski", "Gnabry", "Lewandowski", "Hummels"],
+//   date: "Nov 9th, 2037",
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
+
+// //1.
+// const [players1, players2] = game.players;
+// console.log(players1, players2);
+
+// //2.
+// const [gk, ...fieldPlayers] = players1;
+// //3.
+// const allPlayers = [...game.players[0], ...game.players[1]];
+// console.log(gk, fieldPlayers, allPlayers);
+
+// //4.
+// const players1Final = [...players1, "Thiago", "Coutinho", "Periscic"];
+// console.log(players1Final);
+
+// //5.
+// const {
+//   odds: { team1, x: draw, team2 },
+// } = game.console.log(team1, team2, draw);
+
+// //6.
+// const printGoals = function (...players) {
+//   console.log(`${players.length} goals were scored`);
+// };
+// printGoals("Davies", "Muller", "Lewandowski", "Kimmich");
+// printGoals("Davies", "Muller");
+// printGoals(game.scored); //this doesnt give you the result you want because its seeing the whole array as one argument. you need to take the players out of that array with the rest pattern
+// printGoals(...game.scored);
+
+// //7.
+// team1 < team2 && console.log(`Team 1 is more likely to win`);
+// team1 > team2 && console.log(`Team 1 is more likely to win`);
+////////////////////////////////////////////////////////////////
+
+/*
 //-----LOGICAL ASSIGNMENT OPERATORS-----
 const rest1 = {
   name: "Capri",
@@ -52,6 +156,7 @@ const rest2 = {
   name: "La Piazza",
   owner: "Giovanni Rossi",
 };
+
 
 //--- OR assignment operator
 // what the OR assignment operator assigns a value to a variable IF that variable is currently falsy
@@ -69,6 +174,7 @@ rest1.numGuests ??= 10;
 rest2.numGuests ??= 10;
 
 //---AND logical assignment operator
+//  the and operator assigns a value to a variable if it is currently truthy
 // rest1.owner = rest1.owner && '<ANONYMOUS>';
 // rest2.owner = rest2.owner && '<ANONYMOUS>';
 
@@ -78,7 +184,7 @@ rest2.owner &&= "<ANONYMOUS>";
 console.log(rest1);
 console.log(rest2);
 
-/*
+
 //-----THE NULLISH COALESCING OPERATOR (??)-----
 restaurant.numGuests = 0;
 const guests = restaurant.numGuests ? restaurant.numGuests : 10;
