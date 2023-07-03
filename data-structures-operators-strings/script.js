@@ -66,48 +66,111 @@ const restaurant = {
   },
 };
 
+//-----WORKING WITH STRINGS: Part 2-----
+const airline = "TAP Air Portugal";
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+//Fix capitalization in name
+const passenger = "jOnAs"; //Jonas
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+// Compare email
+const email = "hello@jonas.io";
+const loginEmail = "   Hello@Jonas.io \n";
+
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+// console.log(trimmedEmail);
+const normalizedEmail = loginEmail.toLowerCase().trim();
+//Here, you can kind of take one string and add methods onto it. Each method here is returning a new string, which is itself another iterable, so you can just make a giant funnel to get to what you want
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+//replacing
+const priceGB = "288,97%";
+const priceUS = priceGB.replace("%", "$").replace(",", ".");
+console.log(priceUS);
+
+const announcement =
+  "All passengers come to boarding door 23. Boarding door 23";
+
+console.log(announcement.replace("door", "gate"));
+// console.log(announcement.replaceAll("door", "gate"));
+console.log(announcement.replace(/door/g, "gate"));
+
+//Booleans
+const plane = "A320neo";
+// const plane = "Airbus A320neo"
+console.log(plane.includes("A320"));
+console.log(plane.includes("Boeing"));
+console.log(plane.startsWith("Air"));
+console.log(plane.startsWith("Air"));
+
+if (plane.startsWith("Airbus") && plane.endsWith("neo")) {
+  console.log("Part of the NEW Airbus family!");
+}
+
+//Practice Exercise
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes("knife") || baggage.includes("gun")) {
+    console.log("You are NOT allowed on board");
+  } else {
+    ("Welcome aboard!");
+  }
+};
+
+checkBaggage("I have a laptop, some Food, and a Pocket Knife");
+checkBaggage("I have socks and a camera");
+checkBaggage("I have some snacks and a gun for protection");
+
 //-----WORKING WITH STRINGS: Part 1-----
 
-const airLine = "TAP Air Portugal";
-const plane = "A320";
+// const airLine = "TAP Air Portugal";
+// const plane = "A320";
 
-console.log(plane[0]);
-console.log(plane[1]);
-console.log(plane[2]);
-console.log("B737"[0]);
+// console.log(plane[0]);
+// console.log(plane[1]);
+// console.log(plane[2]);
+// console.log("B737"[0]);
 
-console.log(airline.length);
-console.log("B737".length);
+// console.log(airline.length);
+// console.log("B737".length);
 
-console.log(airline.indexOf("r"));
-console.log(airline.lastIndexOf("r"));
-console.log(indedOf("Portugal")); //case sensitive
-console.log(indedOf("portugal")); //will return -1 since its case sensitive
+// console.log(airline.indexOf("r"));
+// console.log(airline.lastIndexOf("r"));
+// console.log(indedOf("Portugal")); //case sensitive
+// console.log(indedOf("portugal")); //will return -1 since its case sensitive
 
-console.log(airline.slice(4));
-console.log(airline.slice(4, 7)); //length here is end minus beginning
+// console.log(airline.slice(4));
+// console.log(airline.slice(4, 7)); //length here is end minus beginning
 
-console.log(airline.slice(0, airline.indexOf(" "))); //extract first word
-console.log(airline.slice(lastIndexOf(" ") + 1)); //extract last word without the last space
-console.log(airline.slice(-2)); // starting at the end
-console.log(airline.slice(1, -1)); // starting at the beginning but ending at the second to last
+// console.log(airline.slice(0, airline.indexOf(" "))); //extract first word
+// console.log(airline.slice(lastIndexOf(" ") + 1)); //extract last word without the last space
+// console.log(airline.slice(-2)); // starting at the end
+// console.log(airline.slice(1, -1)); // starting at the beginning but ending at the second to last
 
-const checkMiddleSeat = function (seat) {
-  //B and E are middle seats
-  const s = seat.slice(-1);
-  let str;
-  s === "B" || s === "E"
-    ? (str = "You got the middle seat")
-    : (str = "You got lucky!");
-  console.log(str);
-};
-checkMiddleSeat("11B");
-checkMiddleSeat("23C");
-checkMiddleSeat("3E");
+// const checkMiddleSeat = function (seat) {
+//   //B and E are middle seats
+//   const s = seat.slice(-1);
+//   let str;
+//   s === "B" || s === "E"
+//     ? (str = "You got the middle seat")
+//     : (str = "You got lucky!");
+//   console.log(str);
+// };
+// checkMiddleSeat("11B");
+// checkMiddleSeat("23C");
+// checkMiddleSeat("3E");
 
-console.log(new String("jonas"));
-console.log(typeof new String("jonas"));
-console.log(typeof new String("jonas").slice(1));
+// console.log(new String("jonas"));
+// console.log(typeof new String("jonas"));
+// console.log(typeof new String("jonas").slice(1));
 
 //a lot of these methods return a new string you can store in a variable and use later
 
