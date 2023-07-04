@@ -66,52 +66,122 @@ const restaurant = {
   },
 };
 
-//-----WORKING WITH STRINGS: Part 3-----
-console.log("a+very+nice+string".split("+"));
-console.log("Jonas Schmedtman".split(" "));
+/////////////////////////////////////////
+//----CODING CHALLENGE #4-----
+//
+/*
+Write a program that receives a list of variable names written in underscore_case
+and convert them to camelCase.
+The input will come from a textarea inserted into the DOM (see code below to
+insert the elements), and conversion will happen when the button is pressed.
+Test data (pasted to textarea, including spaces):
+underscore_case
+first_name
+Some_Variable
+ calculate_AGE
+delayed_departure
+Should produce this output (5 separate console.log outputs):
+underscoreCase ✅
+firstName ✅✅
+someVariable ✅✅✅
+calculateAge ✅✅✅✅
+delayedDeparture ✅✅✅✅✅
+Hints:
+§ Remember which character defines a new line in the textarea �
+§ The solution only needs to work for a variable made out of 2 words, like a_b
+§ Start without worrying about the ✅. Tackle that only after you have the variable
+name conversion working �
+§ This challenge is difficult on purpose, so start watching the solution in case
+you're stuck. Then pause and continue!
+Afterwards, test with your own test data!
+GOOD LUCK �
+*/
+//take in words, split on \n, split those words on '_', make each index not at 0 capitalized on the first letter, join the words, return the text
 
-const [firstName, lastName] = "Jonas Schmedtmann".split(" ");
+// const camelConvert = function (text) {
+//   let words = text.split("\n");
+//   console.log(words);
+//   for (const word of words) {
+//     let eachWord = words[word].split("_");
+//     for(const w of eachWord){
+//       let i = eachWord[w]
+//       i.toLowerCase().split()
 
-const newName = ["Mr", firstName, lastName.toUpperCase()].join(" ");
-console.log(newName);
+//       console.log(i)
+//     }
 
-const capitalizeName = function (name) {
-  const names = name.split(" ");
-  const namesUpper = [];
+//     // console.log(eachWord)
+//   }
+// };
 
-  for (const n of names) {
-    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
-    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+// camelConvert(
+//   "underscore_case\nfirst_name\nSome_Variable\ncalculate_AGE\ndelayed_departure"
+// );
+
+document.body.append(document.createElement("textarea"));
+document.body.append(document.createElement("button"));
+
+document.querySelector("button").addEventListener("click", function () {
+  const text = document.querySelector("textArea").value;
+  const rows = text.split("\n");
+  // console.log(rows);
+
+  for (const [i, row] of rows.entries()) {
+    const [first, second] = row.toLowerCase().trim().split("_");
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+    console.log(`${output.padEnd(20)} ${"^".repeat(i + 1)}`);
   }
-  console.log(namesUpper.join(" "));
-};
-capitalizeName("jessica ann smith davis");
-capitalizeName("jonas schmedtmann");
-capitalizeName("jon hunt");
+});
 
-//Padding. Start and End
-const message = "Go to gate 23!";
-console.log(message.padStart(25, "+").padEnd(30, "+"));
-console.log("destroy".padStart(25, "+").padEnd(30, "+"));
+//-----WORKING WITH STRINGS: Part 3-----
+// console.log("a+very+nice+string".split("+"));
+// console.log("Jonas Schmedtman".split(" "));
 
-const maskCreditCard = function (number) {
-  const str = number + ""; //faster way than doing String(), since the addition operator doing addition with a string converts the result to a string
-  const last = str.slice(-4);
-  return last.padStart(str.length, "*");
-};
-console.log(maskCreditCard(43567890));
-console.log(maskCreditCard("54328769"));
+// const [firstName, lastName] = "Jonas Schmedtmann".split(" ");
 
-//Repeat: allow us to repeat the same string multiple times
-const message2 = "Bad weather... All Departures Delayed...";
-console.log(message2.repeat(5));
+// const newName = ["Mr", firstName, lastName.toUpperCase()].join(" ");
+// console.log(newName);
 
-const planesInLine = function (n) {
-  console.log(`There are ${n} planes in line ${"^".repeat(n)}`);
-};
-planesInLine(5);
-planesInLine(3);
-planesInLine(12);
+// const capitalizeName = function (name) {
+//   const names = name.split(" ");
+//   const namesUpper = [];
+
+//   for (const n of names) {
+//     // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+//     namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+//   }
+//   console.log(namesUpper.join(" "));
+// };
+// capitalizeName("jessica ann smith davis");
+// capitalizeName("jonas schmedtmann");
+// capitalizeName("jon hunt");
+
+// //Padding. Start and End
+// const message = "Go to gate 23!";
+// console.log(message.padStart(25, "+").padEnd(30, "+"));
+// console.log("destroy".padStart(25, "+").padEnd(30, "+"));
+
+// const maskCreditCard = function (number) {
+//   const str = number + ""; //faster way than doing String(), since the addition operator doing addition with a string converts the result to a string
+//   const last = str.slice(-4);
+//   return last.padStart(str.length, "*");
+// };
+// console.log(maskCreditCard(43567890));
+// console.log(maskCreditCard("54328769"));
+
+// //Repeat: allow us to repeat the same string multiple times
+// const message2 = "Bad weather... All Departures Delayed...";
+// console.log(message2.repeat(5));
+
+// const planesInLine = function (n) {
+//   console.log(`There are ${n} planes in line ${"^".repeat(n)}`);
+// };
+// planesInLine(5);
+// planesInLine(3);
+// planesInLine(12);
 
 //-----WORKING WITH STRINGS: Part 2-----
 // const airline = "TAP Air Portugal";
