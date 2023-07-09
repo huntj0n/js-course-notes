@@ -312,51 +312,74 @@ object! So what should the this keyword look like in this situation?
 // () => console.log("This will ALSO never run again");
 
 //-----CLOSURES-----
-const secureBooking = function () {
-  let passengerCount = 0;
+// const secureBooking = function () {
+//   let passengerCount = 0;
 
-  return function () {
-    passengerCount++;
-    console.log(`${passengerCount} passengers`);
-  };
-};
-const booker = secureBooking();
+//   return function () {
+//     passengerCount++;
+//     console.log(`${passengerCount} passengers`);
+//   };
+// };
+// const booker = secureBooking();
 
-booker();
-booker();
-booker();
+// booker();
+// booker();
+// booker();
 
-let f;
+// let f;
 
-const g = function () {
-  const a = 23;
-  f = function () {
-    console.log(a * 2);
-  };
-};
+// const g = function () {
+//   const a = 23;
+//   f = function () {
+//     console.log(a * 2);
+//   };
+// };
 
-const h = function () {
-  const b = 777;
-  f = function () {
-    console.log(b * 2);
-  };
-};
+// const h = function () {
+//   const b = 777;
+//   f = function () {
+//     console.log(b * 2);
+//   };
+// };
 
-g();
-f();
-//f is reassigned by h
-h();
-f();
+// g();
+// f();
+// //f is reassigned by h
+// h();
+// f();
 
-const boardPassengers = function (n, wait) {
-  const preGroup = n / 3;
+// const boardPassengers = function (n, wait) {
+//   const preGroup = n / 3;
 
-  setTimeout(function () {
-    console.log(`We are now boarding all ${n} passengers`);
-    console.log(`There are 3 groups, each with ${preGroup} passengers`);
-  }, wait * 1000);
+//   setTimeout(function () {
+//     console.log(`We are now boarding all ${n} passengers`);
+//     console.log(`There are 3 groups, each with ${preGroup} passengers`);
+//   }, wait * 1000);
 
-  console.log(`We will start boarding in ${wait} seconds`);
-};
+//   console.log(`We will start boarding in ${wait} seconds`);
+// };
 
-boardPassengers(180, 3);
+// boardPassengers(180, 3);
+
+////////////////////////////////
+//-----CODING CHALLENGE 2-----
+//
+/*
+This is more of a thinking challenge than a coding challenge �
+Your tasks:
+1. Take the IIFE below and at the end of the function, attach an event listener that
+changes the color of the selected h1 element ('header') to blue, each time
+the body element is clicked. Do not select the h1 element again!
+2. And now explain to yourself (or someone around you) why this worked! Take all
+the time you need. Think about when exactly the callback function is executed,
+and what that means for the variables involved in this example.
+*/
+(function () {
+  const header = document.querySelector("h1");
+  header.style.color = "red";
+
+  document.querySelector("body").addEventListener("click", function () {
+    header.style.color = "blue";
+  });
+})();
+//its necessary, or useful, because by the time the event listener is initiated the 'header' variable is executed and long gone. But still, the addeventlistener function is attached to the body, and even though the specific execution context is gone, the event callback function still has access to those variables it had at its 'birth' essentially
