@@ -88,3 +88,24 @@ const bookings = [];
 // document.body.addEventListener("click", high5);
 
 // ["Jonas", "Martha", "Adam"].forEach(high5);
+
+//-----FUNCTIONS RETURNING FUNCTIONS-----
+// const greet = function (greeting) {
+//   return function (name) {
+//     console.log(`${greeting} ${name}`);
+//   };
+// };
+
+// const greeterHey = greet("Hey");
+// greeterHey("Jonas");
+// greeterHey("Steven");
+// //these works due to closures, more on that later
+
+// greet("Hello")("Jonas");
+// //this type of function callbacks and closures is very useful for the functional programming paradigm
+
+// //greet arrow
+// const greetArrow = (greeting) => (name) => console.log(`${greeting} ${name}`);
+// greetArrow("Hey there")("Jonas");
+
+//-----THE CALL AND APPLY METHODS-----
