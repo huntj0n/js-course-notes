@@ -109,100 +109,100 @@ const bookings = [];
 // greetArrow("Hey there")("Jonas");
 
 //-----THE CALL AND APPLY METHODS-----
-const lufthansa = {
-  airLine: "Lufthansa",
-  iataCode: "LH",
-  bookings: [],
-  //book: funciton(){},
-  book(flightNum, name) {
-    console.log(
-      `${name} booked a seat on ${this.airLine} flight ${this.iataCode}${flightNum}`
-    );
-    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
-  },
-};
+// const lufthansa = {
+//   airLine: "Lufthansa",
+//   iataCode: "LH",
+//   bookings: [],
+//   //book: funciton(){},
+//   book(flightNum, name) {
+//     console.log(
+//       `${name} booked a seat on ${this.airLine} flight ${this.iataCode}${flightNum}`
+//     );
+//     this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+//   },
+// };
 
-lufthansa.book(239, "Jonas Schmedtmann");
-lufthansa.book(635, "Mike Smith");
-console.log(lufthansa);
+// lufthansa.book(239, "Jonas Schmedtmann");
+// lufthansa.book(635, "Mike Smith");
+// console.log(lufthansa);
 
-const eurowings = {
-  airLine: "Eurowings",
-  iataCode: "EW",
-  bookings: [],
-};
+// const eurowings = {
+//   airLine: "Eurowings",
+//   iataCode: "EW",
+//   bookings: [],
+// };
 
-const book = lufthansa.book;
+// const book = lufthansa.book;
 
-// book(23, "Sarah Williams"); //this book function is no longer a method, its a regular function called. therefore, the 'this' keyword now points to undefined rather than the object on which we wanted it to be called
+// // book(23, "Sarah Williams"); //this book function is no longer a method, its a regular function called. therefore, the 'this' keyword now points to undefined rather than the object on which we wanted it to be called
 
-//Call Method
-book.call(eurowings, 23, "Sarah Williams"); //remember that a function is really just an object, and objects have methods, and therefore functions can have methods
-console.log(eurowings);
+// //Call Method
+// book.call(eurowings, 23, "Sarah Williams"); //remember that a function is really just an object, and objects have methods, and therefore functions can have methods
+// console.log(eurowings);
 
-book.call(lufthansa, 2239, "Mary Cooper");
-console.log(lufthansa);
+// book.call(lufthansa, 2239, "Mary Cooper");
+// console.log(lufthansa);
 
-const swiss = {
-  airLine: "Swiss Airlines",
-  iataCode: "LX",
-  bookings: [],
-};
-book.call(swiss, 583, "Mary Cooper");
-console.log(swiss);
+// const swiss = {
+//   airLine: "Swiss Airlines",
+//   iataCode: "LX",
+//   bookings: [],
+// };
+// book.call(swiss, 583, "Mary Cooper");
+// console.log(swiss);
 
-//Apply Method: same as the call method, but takes an array of args instead of straight args
-//              not really used in modern JS
-const flightData = [583, "George Cooper"];
-book.apply(swiss, [flightData]);
-console.log(swiss);
+// //Apply Method: same as the call method, but takes an array of args instead of straight args
+// //              not really used in modern JS
+// const flightData = [583, "George Cooper"];
+// book.apply(swiss, [flightData]);
+// console.log(swiss);
 
-book.call(swiss, ...flightData); //using the spread operator here is the exact same as the apply method
+// book.call(swiss, ...flightData); //using the spread operator here is the exact same as the apply method
 
-//BIND Method
-// book.call(eurowings, 23, "Sarah Williams")
+// //BIND Method
+// // book.call(eurowings, 23, "Sarah Williams")
 
-const bookEW = book.bind(eurowings);
-const bookLH = book.bind(lufthansa);
-const bookSW = book.bind(swiss);
-//does not call the function! just binds it to the eurowings object
-bookEW(23, "Steven Williams");
-console.log(eurowings);
+// const bookEW = book.bind(eurowings);
+// const bookLH = book.bind(lufthansa);
+// const bookSW = book.bind(swiss);
+// //does not call the function! just binds it to the eurowings object
+// bookEW(23, "Steven Williams");
+// console.log(eurowings);
 
-const bookEW23 = book.bind(eurowings, 23);
-bookEW23("Charles Oliveira");
-console.log(eurowings);
+// const bookEW23 = book.bind(eurowings, 23);
+// bookEW23("Charles Oliveira");
+// console.log(eurowings);
 
-// With Event Listeners
-lufthansa.planes = 300;
-lufthansa.buyPlane = function () {
-  console.log(this);
-  this.planes++;
-  console.log(this.planes);
-};
-document
-  .querySelector(".buy")
-  .addEventListener("click", lufthansa.buyPlane.bind(lufthansa));
+// // With Event Listeners
+// lufthansa.planes = 300;
+// lufthansa.buyPlane = function () {
+//   console.log(this);
+//   this.planes++;
+//   console.log(this.planes);
+// };
+// document
+//   .querySelector(".buy")
+//   .addEventListener("click", lufthansa.buyPlane.bind(lufthansa));
 
-//Partial application
-const addTax = (rate, value) => value + value * rate;
-console.log(addTax(0.1, 200));
+// //Partial application
+// const addTax = (rate, value) => value + value * rate;
+// console.log(addTax(0.1, 200));
 
-const addVAT = addTax.bind(null, 0.23);
-// addVAT = value => value + value * rate
+// const addVAT = addTax.bind(null, 0.23);
+// // addVAT = value => value + value * rate
 
-console.log(addVAT(100));
-console.log(addVAT(23));
+// console.log(addVAT(100));
+// console.log(addVAT(23));
 
-const addTaxRate = function (rate) {
-  return function (value) {
-    return value + value * rate;
-  };
-};
-const addVAT2 = addTaxRate(0.23);
+// const addTaxRate = function (rate) {
+//   return function (value) {
+//     return value + value * rate;
+//   };
+// };
+// const addVAT2 = addTaxRate(0.23);
 
-console.log(addVAT2(100));
-console.log(addVAT2(23));
+// console.log(addVAT2(100));
+// console.log(addVAT2(23));
 
 //-----CODING CHALLENGE 1---
 /*
@@ -258,37 +258,55 @@ object! So what should the this keyword look like in this situation?
 //   .querySelector(".poll")
 //   .addEventListener("click", poll.registerNewAnswer.bind(poll));
 
-const poll = {
-  question: "What is your favourite programming language?",
-  options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
-  // This generates [0, 0, 0, 0]. More in the next section!
-  answers: new Array(4).fill(0),
-  registerNewAnswer() {
-    //Get Answer
-    const answer = Number(
-      prompt(
-        `${this.question} \n${this.options.join("\n")}\n(Write option number)`
-      )
-    );
-    console.log(answer);
-    //Register Answer
-    typeof answer === "number" &&
-      answer < this.answers.length &&
-      this.answers[answer]++;
+// const poll = {
+//   question: "What is your favourite programming language?",
+//   options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
+//   // This generates [0, 0, 0, 0]. More in the next section!
+//   answers: new Array(4).fill(0),
+//   registerNewAnswer() {
+//     //Get Answer
+//     const answer = Number(
+//       prompt(
+//         `${this.question} \n${this.options.join("\n")}\n(Write option number)`
+//       )
+//     );
+//     console.log(answer);
+//     //Register Answer
+//     typeof answer === "number" &&
+//       answer < this.answers.length &&
+//       this.answers[answer]++;
 
-    this.displayResults();
-    this.displayResults("string");
-  },
-  displayResults(type = "array") {
-    if (type === "array") {
-      console.log(this.answers);
-    } else if (type === "string") {
-      console.log(`Results are ${this.answers.join(", ")}`);
-    }
-  },
+//     this.displayResults();
+//     this.displayResults("string");
+//   },
+//   displayResults(type = "array") {
+//     if (type === "array") {
+//       console.log(this.answers);
+//     } else if (type === "string") {
+//       console.log(`Results are ${this.answers.join(", ")}`);
+//     }
+//   },
+// };
+// document
+//   .querySelector(".poll")
+//   .addEventListener("click", poll.registerNewAnswer.bind(poll));
+
+// poll.displayResults.call({ answers: [5, 2, 3] }, "string");
+
+//////////////////////////////////////////////////////////////
+//
+//
+
+//-----IMMEDIATELY INVOKED FUNCTION EXPRESSIONS-----
+const runOnce = function () {
+  console.log("This will never run again");
 };
-document
-  .querySelector(".poll")
-  .addEventListener("click", poll.registerNewAnswer.bind(poll));
+runOnce();
 
-poll.displayResults.call({ answers: [5, 2, 3] }, "string");
+(function () {
+  console.log("this will really never run again");
+  const isPrivate = 23;
+})();
+
+console.log(isPrivate);
+() => console.log("This will ALSO never run again");
