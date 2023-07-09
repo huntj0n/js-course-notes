@@ -109,3 +109,52 @@ const bookings = [];
 // greetArrow("Hey there")("Jonas");
 
 //-----THE CALL AND APPLY METHODS-----
+const lufthansa = {
+  airLine: "Lufthansa",
+  iataCode: "LH",
+  bookings: [],
+  //book: funciton(){},
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airLine} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
+
+lufthansa.book(239, "Jonas Schmedtmann");
+lufthansa.book(635, "Mike Smith");
+console.log(lufthansa);
+
+const eurowings = {
+  airline: "Eurowings",
+  iataCode: "EW",
+  bookings: [],
+};
+
+const book = lufthansa.book;
+
+// book(23, "Sarah Williams"); //this book function is no longer a method, its a regular function called. therefore, the 'this' keyword now points to undefined rather than the object on which we wanted it to be called
+
+//Call Method
+book.call(eurowings, 23, "Sarah Williams"); //remember that a function is really just an object, and objects have methods, and therefore functions can have methods
+console.log(eurowings);
+
+book.call(lufthansa, 2239, "Mary Cooper");
+console.log(lufthansa);
+
+const swiss = {
+  airline: "Swiss Airlines",
+  iataCode: "LX",
+  bookings: [],
+};
+book.call(swiss, 583, "Mary Cooper");
+console.log(swiss);
+
+//Apply Method: same as the call method, but takes an array of args instead of straight args
+//              not really used in modern JS
+const flightData = [583, "George Cooper"];
+book.apply(swiss, [flightData]);
+console.log(swiss);
+
+book.call(swiss, ...flightData); //using the spread operator here is the exact same as the apply method
