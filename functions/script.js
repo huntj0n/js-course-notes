@@ -298,15 +298,65 @@ object! So what should the this keyword look like in this situation?
 //
 
 //-----IMMEDIATELY INVOKED FUNCTION EXPRESSIONS-----
-const runOnce = function () {
-  console.log("This will never run again");
+// const runOnce = function () {
+//   console.log("This will never run again");
+// };
+// runOnce();
+
+// (function () {
+//   console.log("this will really never run again");
+//   const isPrivate = 23;
+// })();
+
+// // console.log(isPrivate);
+// () => console.log("This will ALSO never run again");
+
+//-----CLOSURES-----
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
 };
-runOnce();
+const booker = secureBooking();
 
-(function () {
-  console.log("this will really never run again");
-  const isPrivate = 23;
-})();
+booker();
+booker();
+booker();
 
-console.log(isPrivate);
-() => console.log("This will ALSO never run again");
+let f;
+
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f();
+//f is reassigned by h
+h();
+f();
+
+const boardPassengers = function (n, wait) {
+  const preGroup = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${preGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`We will start boarding in ${wait} seconds`);
+};
+
+boardPassengers(180, 3);
