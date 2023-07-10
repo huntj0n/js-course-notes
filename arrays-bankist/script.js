@@ -72,51 +72,72 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
-let arr = ["a", "b", "c", "d", "e"];
+//looping using a for of loop
+// for (const movement of movements) {
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1}: you deposited ${movement}`);
+  } else {
+    console.log(`you withdrew ${Math.abs(movement)}`);
+  }
+}
+//  you cant break out of a for each loop, continue and break do not work
+console.log("---FOREACH---");
+movements.forEach(function (mov, i, arr) {
+  if (mov > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${mov}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
+  }
+});
+
+// let arr = ["a", "b", "c", "d", "e"];
 
 //--SLICE--  lets us extract any portion of the array without changing the original
-console.log(arr.slice(2));
-console.log(arr.slice(2, 4));
-console.log(arr.slice(-2));
-console.log(arr.slice(-1));
-console.log(arr.slice(1, -2));
-//these next two do the same thing, making a shallow copy of the array. you can use either, use slice when you want to chain methods together
-console.log(arr.slice());
-console.log([...arr]);
+// console.log(arr.slice(2));
+// console.log(arr.slice(2, 4));
+// console.log(arr.slice(-2));
+// console.log(arr.slice(-1));
+// console.log(arr.slice(1, -2));
+// //these next two do the same thing, making a shallow copy of the array. you can use either, use slice when you want to chain methods together
+// console.log(arr.slice());
+// console.log([...arr]);
 
-//--SPLICE--  like splice but DOES mutate the array. it takes a given element(s) out and returns them, the original loses what was extracted
-// console.log(arr.splice(2));
-arr.splice(-1); //common way to remove the last element of an array
-arr.splice(1, 2); //splice(start, deleteCount, item1, item2)
-console.log(arr);
+// //--SPLICE--  like splice but DOES mutate the array. it takes a given element(s) out and returns them, the original loses what was extracted
+// // console.log(arr.splice(2));
+// arr.splice(-1); //common way to remove the last element of an array
+// arr.splice(1, 2); //splice(start, deleteCount, item1, item2)
+// console.log(arr);
 
-//--REVERSE-- DOES mutate the original array
-arr = ["a", "b", "c", "d", "e"];
-const arr2 = ["j", "i", "h", "g", "f"];
-console.log(arr2.reverse());
-console.log(arr2);
+// //--REVERSE-- DOES mutate the original array
+// arr = ["a", "b", "c", "d", "e"];
+// const arr2 = ["j", "i", "h", "g", "f"];
+// console.log(arr2.reverse());
+// console.log(arr2);
 
-//--CONCAT-- DOES NOT mutate the original array
-const letters = arr.concat(arr2);
-console.log(letters);
-console.log([...arr], [...arr2]); //does the same thing as concat, doesnt mutate the origial array
+// //--CONCAT-- DOES NOT mutate the original array
+// const letters = arr.concat(arr2);
+// console.log(letters);
+// console.log([...arr], [...arr2]); //does the same thing as concat, doesnt mutate the origial array
 
-//--JOIN--
-console.log(letters.join("-"));
+// //--JOIN--
+// console.log(letters.join("-"));
 
-//remember you also know push, unshift, pop, shift, indexOf and includes from the intro section
+// //remember you also know push, unshift, pop, shift, indexOf and includes from the intro section
 
-//-- THE AT METHOD --
-const arr3 = [23, 11, 64];
-console.log(arr[0]);
-//but now we can do this same thing with a method
-console.log(arr.at(0));
+// //-- THE AT METHOD --
+// const arr3 = [23, 11, 64];
+// console.log(arr[0]);
+// //but now we can do this same thing with a method
+// console.log(arr.at(0));
 
-//getting the last array element
-console.log(arr3[arr3.length - 1]);
-console.log(arr3.slice(-1)[0]);
-console.log(arr3.at(-1));
-console.log("jonas".at(0));
-console.log("jonas".at(-1));
+// //getting the last array element
+// console.log(arr3[arr3.length - 1]);
+// console.log(arr3.slice(-1)[0]);
+// console.log(arr3.at(-1));
+// console.log("jonas".at(0));
+// console.log("jonas".at(-1));
 
 //which should you use? method chaining, get the last element, count from the end; use at. otherwise its helpful but you can use what you want. the bracket notation is fast for getting the first element of the array
+
+//-----LOOPING ARRAYS: the FOREACH method-----
