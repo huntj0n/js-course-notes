@@ -103,3 +103,20 @@ console.log([...arr], [...arr2]); //does the same thing as concat, doesnt mutate
 
 //--JOIN--
 console.log(letters.join("-"));
+
+//remember you also know push, unshift, pop, shift, indexOf and includes from the intro section
+
+//-- THE AT METHOD --
+const arr3 = [23, 11, 64];
+console.log(arr[0]);
+//but now we can do this same thing with a method
+console.log(arr.at(0));
+
+//getting the last array element
+console.log(arr3[arr3.length - 1]);
+console.log(arr3.slice(-1)[0]);
+console.log(arr3.at(-1));
+console.log("jonas".at(0));
+console.log("jonas".at(-1));
+
+//which should you use? method chaining, get the last element, count from the end; use at. otherwise its helpful but you can use what you want. the bracket notation is fast for getting the first element of the array
