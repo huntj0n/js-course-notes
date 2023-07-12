@@ -72,24 +72,37 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+//-----forEach WITH SETS AND MAPS-----
+//map
+currencies.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`);
+});
+
+//set
+const currenciesUnique = newSet(["USD", "GBP", "USD", "EUR", "EUR"]);
+
+currenciesUnique.forEach(function (value, key, set) {
+  console.log(`${key}: ${value}`);
+});
+
 //looping using a for of loop
 // for (const movement of movements) {
-for (const [i, movement] of movements.entries()) {
-  if (movement > 0) {
-    console.log(`Movement ${i + 1}: you deposited ${movement}`);
-  } else {
-    console.log(`you withdrew ${Math.abs(movement)}`);
-  }
-}
-//  you cant break out of a for each loop, continue and break do not work
-console.log("---FOREACH---");
-movements.forEach(function (mov, i, arr) {
-  if (mov > 0) {
-    console.log(`Movement ${i + 1}: You deposited ${mov}`);
-  } else {
-    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
-  }
-});
+// for (const [i, movement] of movements.entries()) {
+//   if (movement > 0) {
+//     console.log(`Movement ${i + 1}: you deposited ${movement}`);
+//   } else {
+//     console.log(`you withdrew ${Math.abs(movement)}`);
+//   }
+// }
+// //  you cant break out of a for each loop, continue and break do not work
+// console.log("---FOREACH---");
+// movements.forEach(function (mov, i, arr) {
+//   if (mov > 0) {
+//     console.log(`Movement ${i + 1}: You deposited ${mov}`);
+//   } else {
+//     console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
+//   }
+// });
 
 // let arr = ["a", "b", "c", "d", "e"];
 
