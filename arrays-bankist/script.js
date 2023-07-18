@@ -84,62 +84,6 @@ displayMovements(account1.movements);
 /////////////////////////////////////////////////
 // LECTURES
 
-//////////////////////////////////////////////////
-//-----CODING CHALLENGE 1-----
-//
-/*
-Julia and Kate are doing a study on dogs. So each of them asked 5 dog owners
-about their dog's age, and stored the data into an array (one array for each). For
-now, they are just interested in knowing whether a dog is an adult or a puppy.
-A dog is an adult if it is at least 3 years old, and it's a puppy if it's less than 3 years
-old.
-Your tasks:
-Create a function 'checkDogs', which accepts 2 arrays of dog's ages
-('dogsJulia' and 'dogsKate'), and does the following things:
-1. Julia found out that the owners of the first and the last two dogs actually have
-cats, not dogs! So create a shallow copy of Julia's array, and remove the cat
-ages from that copied array (because it's a bad practice to mutate function
-parameters)
-2. Create an array with both Julia's (corrected) and Kate's data
-3. For each remaining dog, log to the console whether it's an adult ("Dog number 1
-is an adult, and is 5 years old") or a puppy ("Dog number 2 is still a puppy
-�
-")
-4. Run the function for both test datasets
-Test data:
-§ Data 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
-§ Data 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
-Hints: Use tools from all lectures in this section so far �
-*/
-
-const checkDogs = function (dogs1, dogs2) {
-  let catRemover = dogs1.slice(1, -1);
-  const combinedDogs = [...catRemover, ...dogs2];
-
-  combinedDogs.forEach(function (dog, i) {
-    if (dog > 3) {
-      console.log(
-        `Dog #${i + 1} is an adult, and is ${combinedDogs[i]} years old`
-      );
-    } else {
-      console.log(
-        `Dog #${i + 1} is a puppy, and is ${combinedDogs[i]} years old`
-      );
-    }
-  });
-};
-const juliasData1 = [3, 5, 2, 12, 7];
-const katesData1 = [4, 1, 15, 8, 3];
-
-const juliasData2 = [9, 16, 6, 8, 3];
-const katesData2 = [10, 5, 6, 1, 4];
-
-checkDogs(juliasData1, katesData1);
-checkDogs(juliasData2, katesData2);
-
-console.log(juliasData1);
-console.log(juliasData2);
-
 /////////////////////////////////////////////////
 // const currencies = new Map([
 //   ["USD", "United States dollar"],
@@ -233,3 +177,90 @@ console.log(juliasData2);
 //which should you use? method chaining, get the last element, count from the end; use at. otherwise its helpful but you can use what you want. the bracket notation is fast for getting the first element of the array
 
 //-----LOOPING ARRAYS: the FOREACH method-----
+//
+
+//////////////////////////////////////////////////
+//-----CODING CHALLENGE 1-----
+//
+/*
+Julia and Kate are doing a study on dogs. So each of them asked 5 dog owners
+about their dog's age, and stored the data into an array (one array for each). For
+now, they are just interested in knowing whether a dog is an adult or a puppy.
+A dog is an adult if it is at least 3 years old, and it's a puppy if it's less than 3 years
+old.
+Your tasks:
+Create a function 'checkDogs', which accepts 2 arrays of dog's ages
+('dogsJulia' and 'dogsKate'), and does the following things:
+1. Julia found out that the owners of the first and the last two dogs actually have
+cats, not dogs! So create a shallow copy of Julia's array, and remove the cat
+ages from that copied array (because it's a bad practice to mutate function
+parameters)
+2. Create an array with both Julia's (corrected) and Kate's data
+3. For each remaining dog, log to the console whether it's an adult ("Dog number 1
+is an adult, and is 5 years old") or a puppy ("Dog number 2 is still a puppy
+�
+")
+4. Run the function for both test datasets
+Test data:
+§ Data 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
+§ Data 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
+Hints: Use tools from all lectures in this section so far �
+*/
+
+// const checkDogs = function (dogs1, dogs2) {
+//   let catRemover = dogs1.slice(1, -1);
+//   const combinedDogs = [...catRemover, ...dogs2];
+
+//   combinedDogs.forEach(function (dog, i) {
+//     if (dog > 3) {
+//       console.log(
+//         `Dog #${i + 1} is an adult, and is ${combinedDogs[i]} years old`
+//       );
+//     } else {
+//       console.log(
+//         `Dog #${i + 1} is a puppy, and is ${combinedDogs[i]} years old`
+//       );
+//     }
+//   });
+// };
+// const juliasData1 = [3, 5, 2, 12, 7];
+// const katesData1 = [4, 1, 15, 8, 3];
+
+// const juliasData2 = [9, 16, 6, 8, 3];
+// const katesData2 = [10, 5, 6, 1, 4];
+
+// checkDogs(juliasData1, katesData1);
+// checkDogs(juliasData2, katesData2);
+
+// console.log(juliasData1);
+// console.log(juliasData2);
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+//-----the MAP method-----
+
+//returns a new array containing the results of applying an operation (callback) on all original array elements
+
+const eurToUSD = 1.1;
+
+//.MAP is a little more in line with functional programming
+const movementsUSD = movements.map(function (mov) {
+  return mov * 1.1;
+});
+
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for (const mov of movements) movementsUSDfor.push(mov * eurToUSD);
+console.log(movementsUSDfor);
+
+const movementsUSDarrow = movements.map((mov) => mov * eurToUSD);
+console.log(movementsUSDarrow);
+
+const movementsDescriptions = movements.map((mov, i, arr) => {
+  `Movement ${i + 1}: You ${mov > 0 ? "deposited" : "withdrew"} ${Math.abs(
+    mov
+  )}`;
+});
+console.log(movementsDescriptions);
