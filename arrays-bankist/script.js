@@ -78,6 +78,19 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const createUsernames = function (accts) {
+  accts.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(" ")
+      .map((name) => name[0])
+      .join("");
+  });
+};
+createUsernames(accounts);
+
+console.log(accounts);
+
 // console.log(containerMovements.innerHTML);
 
 /////////////////////////////////////////////////
@@ -235,32 +248,32 @@ Hints: Use tools from all lectures in this section so far �
 // console.log(juliasData1);
 // console.log(juliasData2);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-//-----the MAP method-----
+// //-----the MAP method-----
 
-//returns a new array containing the results of applying an operation (callback) on all original array elements
+// //returns a new array containing the results of applying an operation (callback) on all original array elements
 
-const eurToUSD = 1.1;
+// const eurToUSD = 1.1;
 
-//.MAP is a little more in line with functional programming
-const movementsUSD = movements.map(function (mov) {
-  return mov * 1.1;
-});
+// //.MAP is a little more in line with functional programming
+// const movementsUSD = movements.map(function (mov) {
+//   return mov * 1.1;
+// });
 
-console.log(movements);
-console.log(movementsUSD);
+// console.log(movements);
+// console.log(movementsUSD);
 
-const movementsUSDfor = [];
-for (const mov of movements) movementsUSDfor.push(mov * eurToUSD);
-console.log(movementsUSDfor);
+// const movementsUSDfor = [];
+// for (const mov of movements) movementsUSDfor.push(mov * eurToUSD);
+// console.log(movementsUSDfor);
 
-const movementsUSDarrow = movements.map((mov) => mov * eurToUSD);
-console.log(movementsUSDarrow);
+// const movementsUSDarrow = movements.map((mov) => mov * eurToUSD);
+// console.log(movementsUSDarrow);
 
-const movementsDescriptions = movements.map((mov, i, arr) => {
-  `Movement ${i + 1}: You ${mov > 0 ? "deposited" : "withdrew"} ${Math.abs(
-    mov
-  )}`;
-});
-console.log(movementsDescriptions);
+// const movementsDescriptions = movements.map((mov, i, arr) => {
+//   `Movement ${i + 1}: You ${mov > 0 ? "deposited" : "withdrew"} ${Math.abs(
+//     mov
+//   )}`;
+// });
+// console.log(movementsDescriptions);
