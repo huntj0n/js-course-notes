@@ -110,6 +110,57 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+//----- CODING CHALLENGE #2 -----
+/*
+Let's go back to Julia and Kate's study about dogs. This time, they want to convert
+dog ages to human ages and calculate the average age of the dogs in their study.
+Your tasks:
+Create a function 'calcAverageHumanAge', which accepts an arrays of dog's
+ages ('ages'), and does the following things in order:
+1. Calculate the dog age in human years using the following formula: if the dog is
+<= 2 years old, humanAge = 2 * dogAge. If the dog is > 2 years old,
+humanAge = 16 + dogAge * 4
+2. Exclude all dogs that are less than 18 human years old (which is the same as
+keeping dogs that are at least 18 years old)
+3. Calculate the average human age of all adult dogs (you should already know
+from other challenges how we calculate averages �)
+4. Run the function for both test datasets
+Test data:
+§ Data 1: [5, 2, 4, 1, 15, 8, 3]
+§ Data 2: [16, 6, 10, 5, 6, 1, 4]
+*/
+
+const data1 = [5, 2, 4, 1, 15, 8, 3];
+const data2 = [16, 6, 10, 5, 6, 1, 4];
+
+// const calcAverageHumanAge = function (dogAges) {
+//   const mapped = dogAges.map(function (age) {
+//     if (age <= 2) 2 * age;
+//     else 16 + age * 4;
+//   });
+//   const filtered = mapped.filter(function (age) {
+//     return age > 18;
+//   });
+//   const reduced = filtered.reduce((acc, ages) => acc + ages, 0);
+
+//   let average = reduced / dogAges.entries();
+//   return average;
+// };
+
+const calcAverageHumanAge = function (ages) {
+  const humanAges = ages.map((age) => (age <= 2 ? 2 * age : 16 + age * 4));
+  const adults = humanAges.filter((age) => age >= 18);
+  const average = adults.reduce((acc, age) => acc + age, 0) / adults.length;
+
+  return average;
+};
+
+const average1 = calcAverageHumanAge(data1);
+const average2 = calcAverageHumanAge(data2);
+
+console.log(average1);
+console.log(average2);
+
 //----- .map() method-----
 // const createUsernames = function (accts) {
 //   accts.forEach(function (acc) {
@@ -137,7 +188,7 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(withdrawals);
 
 //----- .reduce() method -----
-console.log(movements);
+// console.log(movements);
 
 //accumulator -> SNOWBALL
 // const balance = movements.reduce(function (acc, cur, i, arr) {
@@ -146,19 +197,19 @@ console.log(movements);
 // }, 0);
 // console.log(balance);
 
-const balance = movements.reduce((acc, cur) => acc + cur, 0);
-console.log(balance);
+// const balance = movements.reduce((acc, cur) => acc + cur, 0);
+// console.log(balance);
 
-let balance2 = 0;
-for (const mov of movements) balance2 += mov;
-console.log(balance2);
+// let balance2 = 0;
+// for (const mov of movements) balance2 += mov;
+// console.log(balance2);
 
-//Maximum value of array
-const max = movements.reduce((acc, mov) => {
-  if (acc > mov) return acc;
-  else return mov;
-}, movements[0]);
-console.log(max);
+// //Maximum value of array
+// const max = movements.reduce((acc, mov) => {
+//   if (acc > mov) return acc;
+//   else return mov;
+// }, movements[0]);
+// console.log(max);
 
 //-----forEach WITH SETS AND MAPS-----
 //map
