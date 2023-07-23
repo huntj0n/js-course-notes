@@ -237,35 +237,68 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+const x = new Array(7); // this wont do anything. you cant do much with this array besides ,fill()
+// x.fill(1);
+// x.fill(1, 3);
+x.fill(1, 3, 5);
+console.log(x);
+
+arr.fill(23, 2, 6);
+console.log(arr);
+
+//Array.from
+//using this on the array constructure, NOT using from as a method on an array
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+
+// const randomDice = Array.from({ length: 100 }, () =>
+//   Math.floor(Math.random() * 6 + 1)
+// );
+// console.log(randomDice);
+
+labelBalance.addEventListener("click", function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll(".movements__value"),
+    (el) => Number(el.textContent.replace("€", ""))
+  );
+  console.log(movementsUI);
+});
+
 //----- the .sort() method -----
 //strings
-const owners = ["Jonas", "Zach", "Adam", "Martha"];
-console.log(owners.sort());
-console.log(owners);
+// const owners = ["Jonas", "Zach", "Adam", "Martha"];
+// console.log(owners.sort());
+// console.log(owners);
 
-//Numbers
-console.log(movements);
-// console.log(movements.sort());
+// //Numbers
+// console.log(movements);
+// // console.log(movements.sort());
 
-//return < 0, A, B
-//return > 0, B, A
+// //return < 0, A, B
+// //return > 0, B, A
 
-//Ascending
+// //Ascending
+// // console.log(
+// //   movements.sort((a, b) => {
+// //     if (a > b) return 1;
+// //     if (b > a) return -1;
+// //   })
+// // );
+// console.log(movements.sort((a, b) => a - b));
+
+// //Descending
 // console.log(
 //   movements.sort((a, b) => {
-//     if (a > b) return 1;
-//     if (b > a) return -1;
+//     if (a > b) return -1;
+//     if (b > a) return 1;
 //   })
 // );
-console.log(movements.sort((a, b) => a - b));
-
-//Descending
-console.log(
-  movements.sort((a, b) => {
-    if (a > b) return -1;
-    if (b > a) return 1;
-  })
-);
 
 //----- flat and flatMap -----
 // const arr = [[, 2, 3], [4, 5, 6], 7, 8];
