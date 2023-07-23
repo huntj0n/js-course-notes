@@ -228,24 +228,44 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+//----- flat and flatMap -----
+const arr = [[, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat()); //and thats it
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arr.flat(2)); //.flat() takes a 'depth' parameter
+
+//flat
+const overallBalance = accounts
+  .map((acc) => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+
+//flatMap
+const overallBalance2 = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance2);
+
 //----- the .some() and .every() methods-----
 //----SOME----
-console.log(movements);
-//checks for equality
-console.log(movements.includes(-130));
-//checks for any condition
-const anyDeposits = movements.some((mov) => mov > 0);
-console.log(anyDeposits);
+// console.log(movements);
+// //checks for equality
+// console.log(movements.includes(-130));
+// //checks for any condition
+// const anyDeposits = movements.some((mov) => mov > 0);
+// console.log(anyDeposits);
 
-//----EVERY----
-console.log(movements.every((mov) => mov > 0));
-console.log(account4.movements.every((mov) => mov > 0));
+// //----EVERY----
+// console.log(movements.every((mov) => mov > 0));
+// console.log(account4.movements.every((mov) => mov > 0));
 
-//separate callback
-const deposit = (mov) => mov > 0;
-console.log(movements.some(deposit));
-console.log(movements.every(deposit));
-console.log(movements.filter(deposit));
+// //separate callback
+// const deposit = (mov) => mov > 0;
+// console.log(movements.some(deposit));
+// console.log(movements.every(deposit));
+// console.log(movements.filter(deposit));
 
 //----- the .find() method -----
 // const firstWithdrawal = movements.find((mov) => mov < 0);
