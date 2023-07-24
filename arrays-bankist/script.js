@@ -237,39 +237,96 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
-const arr = [1, 2, 3, 4, 5, 6, 7];
-console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+//----- ARRAY METHODS PRACTICE -----
 
-const x = new Array(7); // this wont do anything. you cant do much with this array besides ,fill()
-// x.fill(1);
-// x.fill(1, 3);
-x.fill(1, 3, 5);
-console.log(x);
+// 1. calc total deposits
+// const bankDepositSum = accounts.map((acc) => acc.movements).flat();
+const bankDepositSum = accounts
+  .flatMap((acc) => movements)
+  .filter((mov) => mov > 0)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(bankDepositSum);
 
-arr.fill(23, 2, 6);
-console.log(arr);
+// 2. how many with at least $1000
+// const numDeposits1000 = accounts
+//   .flatMap((acc) => acc.movements)
+//   .filter((mov) => mov > 1000).length;
 
-//Array.from
-//using this on the array constructure, NOT using from as a method on an array
-const y = Array.from({ length: 7 }, () => 1);
-console.log(y);
+//same thing with reduce
+const numDeposits1000 = accounts
+  .flatMap((acc) => acc.movements)
+  //   .reduce((count, cur) => (cur >= 1000 ? count + 1 : count), 0);
+  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0); //the prefixed plus plus operator, written before the operand
+//   .reduce((count, cur) => (cur >= 1000 ? count++ : count), 0); //the ++ will result in 0 because the ++ does increment the value but it returns the old value
+console.log(numDeposits1000);
 
-const z = Array.from({ length: 7 }, (_, i) => i + 1);
-console.log(z);
+//!!!!! REMEMBER THAT YOU ALWAYS NEED TO RETURN THE ACCUMULATOR IN THE REDUCE METHOD
 
-// const randomDice = Array.from({ length: 100 }, () =>
-//   Math.floor(Math.random() * 6 + 1)
-// );
-// console.log(randomDice);
-
-labelBalance.addEventListener("click", function () {
-  const movementsUI = Array.from(
-    document.querySelectorAll(".movements__value"),
-    (el) => Number(el.textContent.replace("€", ""))
+// 3. more reduce: create an object with the sum of the deposits and withdrawals
+const { deposits, withdrawals } = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      //   cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+      sums[cur > 0 ? "deposits" : "withdrawals"] += cur;
+      return sums; //arrow funtions only have an implicet return when they dont have curly braces
+    },
+    { deposits: 0, withdrawals: 0 }
   );
+console.log(deposits, withdrawals);
 
-  console.log(movementsUI);
-});
+// 4.
+//this is a nuce title -> This Is a Nice Title
+const convertTitleCase = function (title) {
+  const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+
+  const exceptions = ["a", "an", "and", "the", "but", "or", "on", "in", "with"];
+
+  const titleCase = title
+    .toLowerCase()
+    .split(" ")
+    .map((word) => (exceptions.includes(word) ? word : capitalize(word)))
+    .join(" ");
+  return capitalize(titleCase);
+};
+console.log(convertTitleCase("this is a nice title"));
+console.log(convertTitleCase("this is a LONG title but not too long"));
+console.log(convertTitleCase("this is another title with an EXAMPLE"));
+console.log(convertTitleCase("and here is another title with an EXAMPLE"));
+
+// const arr = [1, 2, 3, 4, 5, 6, 7];
+// console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+// const x = new Array(7); // this wont do anything. you cant do much with this array besides ,fill()
+// // x.fill(1);
+// // x.fill(1, 3);
+// x.fill(1, 3, 5);
+// console.log(x);
+
+// arr.fill(23, 2, 6);
+// console.log(arr);
+
+// //Array.from
+// //using this on the array constructure, NOT using from as a method on an array
+// const y = Array.from({ length: 7 }, () => 1);
+// console.log(y);
+
+// const z = Array.from({ length: 7 }, (_, i) => i + 1);
+// console.log(z);
+
+// // const randomDice = Array.from({ length: 100 }, () =>
+// //   Math.floor(Math.random() * 6 + 1)
+// // );
+// // console.log(randomDice);
+
+// labelBalance.addEventListener("click", function () {
+//   const movementsUI = Array.from(
+//     document.querySelectorAll(".movements__value"),
+//     (el) => Number(el.textContent.replace("€", ""))
+//   );
+
+//   console.log(movementsUI);
+// });
 
 //----- the .sort() method -----
 //strings
