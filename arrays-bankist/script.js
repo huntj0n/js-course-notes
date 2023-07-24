@@ -237,62 +237,172 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+///----- CODING CHALLENGE 4 -----
+//
+/* 
+Julia and Kate are still studying dogs, and this time they are studying if dogs are
+eating too much or too little.
+Eating too much means the dog's current food portion is larger than the
+recommended portion, and eating too little is the opposite.
+Eating an okay amount means the dog's current food portion is within a range 10%
+above and 10% below the recommended portion (see hint).
+Your tasks:
+
+1. Loop over the 'dogs' array containing dog objects, and for each dog, calculate
+the recommended food portion and add it to the object as a new property. Do
+not create a new array, simply loop over the array. Forumla:
+recommendedFood = weight ** 0.75 * 28. (The result is in grams of
+food, and the weight needs to be in kg)
+
+2. Find Sarah's dog and log to the console whether it's eating too much or too
+little. Hint: Some dogs have multiple owners, so you first need to find Sarah in
+the owners array, and so this one is a bit tricky (on purpose) �
+
+3. Create an array containing all owners of dogs who eat too much
+('ownersEatTooMuch') and an array with all owners of dogs who eat too little
+('ownersEatTooLittle').
+
+4. Log a string to the console for each array created in 3., like this: "Matilda and
+Alice and Bob's dogs eat too much!" and "Sarah and John and Michael's dogs eat
+too little!"
+
+5. Log to the console whether there is any dog eating exactly the amount of food
+that is recommended (just true or false)
+
+6. Log to the console whether there is any dog eating an okay amount of food
+(just true or false)
+
+7. Create an array containing the dogs that are eating an okay amount of food (try
+to reuse the condition used in 6.)
+
+8. Create a shallow copy of the 'dogs' array and sort it by recommended food
+portion in an ascending order (keep in mind that the portions are inside the
+array's objects �)
+
+Hints:
+§ Use many different tools to solve these challenges, you can use the summary
+lecture to choose between them �
+§ Being within a range 10% above and below the recommended portion means:
+current > (recommended * 0.90) && current < (recommended *
+1.10). Basically, the current portion should be between 90% and 110% of the
+recommended portion.
+*/
+
+//Test Data
+const dogs = [
+  { weight: 22, curFood: 250, owners: ["Alice", "Bob"] },
+  { weight: 8, curFood: 200, owners: ["Matilda"] },
+  { weight: 13, curFood: 275, owners: ["Sarah", "John"] },
+  { weight: 32, curFood: 340, owners: ["Michael"] },
+];
+
+// 1.
+dogs.forEach((dog) => {
+  dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28);
+});
+// console.log(dogs);
+
+// 2.
+let sarahsDogsFood = dogs.find((dog) =>
+  dog.owners.includes("Sarah") ? dog : null
+);
+// console.log(
+//   sarahsDogsFood.curFood > sarahsDogsFood.recommendedFood
+//     ? "Sarah's dog is eating too much"
+//     : "Sarahs dog is eating too little"
+// );
+
+// 3.
+const ownersEatTooMuch = dogs
+  .filter((dog) => dog.curFood > dog.recommendedFood)
+  .flatMap((dog) => dog.owners);
+const ownersEatTooLittle = dogs
+  .filter((dog) => dog.curFood < dog.recommendedFood)
+  .flatMap((dog) => dog.owners);
+
+console.log(ownersEatTooMuch);
+console.log(ownersEatTooLittle);
+
+// 4.
+console.log(`${ownersEatTooMuch.join(" and ")}'s eat too much!`);
+console.log(`${ownersEatTooLittle.join(" and ")}'s eat too much!`);
+
+// 5.
+console.log(dogs.some((dog) => dog.curFood === dog.recommendedFood));
+
+// 6.
+const checkEatingOkay = (dog) =>
+  dog.curFood > dog.recommendedFood * 0.9 &&
+  dog.curFood < dog.recommendedFood * 1.1;
+
+console.log(dogs.some(checkEatingOkay));
+
+// 7.
+console.log(dogs.filter(checkEatingOkay));
+
+// 8.
+// sort it by recommended food portion in an ascending order
+const dogsSorted = dogs
+  .slice()
+  .sort((a, b) => a.recommendedFood - b.recommendedFood);
+console.log(dogsSorted);
+
 //----- ARRAY METHODS PRACTICE -----
 
 // 1. calc total deposits
 // const bankDepositSum = accounts.map((acc) => acc.movements).flat();
-const bankDepositSum = accounts
-  .flatMap((acc) => movements)
-  .filter((mov) => mov > 0)
-  .reduce((acc, mov) => acc + mov, 0);
-console.log(bankDepositSum);
+// const bankDepositSum = accounts
+//   .flatMap((acc) => movements)
+//   .filter((mov) => mov > 0)
+//   .reduce((acc, mov) => acc + mov, 0);
+// console.log(bankDepositSum);
 
-// 2. how many with at least $1000
+// // 2. how many with at least $1000
+// // const numDeposits1000 = accounts
+// //   .flatMap((acc) => acc.movements)
+// //   .filter((mov) => mov > 1000).length;
+
+// //same thing with reduce
 // const numDeposits1000 = accounts
 //   .flatMap((acc) => acc.movements)
-//   .filter((mov) => mov > 1000).length;
+//   //   .reduce((count, cur) => (cur >= 1000 ? count + 1 : count), 0);
+//   .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0); //the prefixed plus plus operator, written before the operand
+// //   .reduce((count, cur) => (cur >= 1000 ? count++ : count), 0); //the ++ will result in 0 because the ++ does increment the value but it returns the old value
+// console.log(numDeposits1000);
 
-//same thing with reduce
-const numDeposits1000 = accounts
-  .flatMap((acc) => acc.movements)
-  //   .reduce((count, cur) => (cur >= 1000 ? count + 1 : count), 0);
-  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0); //the prefixed plus plus operator, written before the operand
-//   .reduce((count, cur) => (cur >= 1000 ? count++ : count), 0); //the ++ will result in 0 because the ++ does increment the value but it returns the old value
-console.log(numDeposits1000);
+// //!!!!! REMEMBER THAT YOU ALWAYS NEED TO RETURN THE ACCUMULATOR IN THE REDUCE METHOD
 
-//!!!!! REMEMBER THAT YOU ALWAYS NEED TO RETURN THE ACCUMULATOR IN THE REDUCE METHOD
+// // 3. more reduce: create an object with the sum of the deposits and withdrawals
+// const { deposits, withdrawals } = accounts
+//   .flatMap((acc) => acc.movements)
+//   .reduce(
+//     (sums, cur) => {
+//       //   cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+//       sums[cur > 0 ? "deposits" : "withdrawals"] += cur;
+//       return sums; //arrow funtions only have an implicet return when they dont have curly braces
+//     },
+//     { deposits: 0, withdrawals: 0 }
+//   );
+// console.log(deposits, withdrawals);
 
-// 3. more reduce: create an object with the sum of the deposits and withdrawals
-const { deposits, withdrawals } = accounts
-  .flatMap((acc) => acc.movements)
-  .reduce(
-    (sums, cur) => {
-      //   cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
-      sums[cur > 0 ? "deposits" : "withdrawals"] += cur;
-      return sums; //arrow funtions only have an implicet return when they dont have curly braces
-    },
-    { deposits: 0, withdrawals: 0 }
-  );
-console.log(deposits, withdrawals);
+// // 4.
+// //this is a nuce title -> This Is a Nice Title
+// const convertTitleCase = function (title) {
+//   const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
 
-// 4.
-//this is a nuce title -> This Is a Nice Title
-const convertTitleCase = function (title) {
-  const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+//   const exceptions = ["a", "an", "and", "the", "but", "or", "on", "in", "with"];
 
-  const exceptions = ["a", "an", "and", "the", "but", "or", "on", "in", "with"];
-
-  const titleCase = title
-    .toLowerCase()
-    .split(" ")
-    .map((word) => (exceptions.includes(word) ? word : capitalize(word)))
-    .join(" ");
-  return capitalize(titleCase);
-};
-console.log(convertTitleCase("this is a nice title"));
-console.log(convertTitleCase("this is a LONG title but not too long"));
-console.log(convertTitleCase("this is another title with an EXAMPLE"));
-console.log(convertTitleCase("and here is another title with an EXAMPLE"));
+//   const titleCase = title
+//     .toLowerCase()
+//     .split(" ")
+//     .map((word) => (exceptions.includes(word) ? word : capitalize(word)))
+//     .join(" ");
+//   return capitalize(titleCase);
+// };
+// console.log(convertTitleCase("this is a nice title"));
+// console.log(convertTitleCase("this is a LONG title but not too long"));
+// console.log(convertTitleCase("this is another title with an EXAMPLE"));
+// console.log(convertTitleCase("and here is another title with an EXAMPLE"));
 
 // const arr = [1, 2, 3, 4, 5, 6, 7];
 // console.log(new Array(1, 2, 3, 4, 5, 6, 7));
