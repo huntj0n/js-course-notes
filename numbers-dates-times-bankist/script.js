@@ -81,19 +81,28 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // Functions
 
-const displayMovements = function (movements, sort = false) {
+const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
 
-  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  const movs = sort
+    ? acc.movements.slice().sort((a, b) => a - b)
+    : acc.movements;
 
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const date = new Date(acc.movementsDates[i]);
+    const day = `${date.getDate()}`.padStart(2, 0);
+    const month = `${date.getMonth() + 1}`.padStart(2, 0);
+    const year = date.getFullYear();
+    const displayDate = `${day}/${month}/${year}`;
 
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
+        <div class='movements__dates'>${displayDate}</div>
         <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
@@ -142,7 +151,7 @@ createUsernames(accounts);
 
 const updateUI = function (acc) {
   // Display movements
-  displayMovements(acc.movements);
+  displayMovements(acc);
 
   // Display balance
   calcDisplayBalance(acc);
@@ -154,6 +163,11 @@ const updateUI = function (acc) {
 ///////////////////////////////////////
 // Event handlers
 let currentAccount;
+
+//FAKE ALWAYS LOGGED IN
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
@@ -170,6 +184,15 @@ btnLogin.addEventListener('click', function (e) {
       currentAccount.owner.split(' ')[0]
     }`;
     containerApp.style.opacity = 100;
+
+    //Display current date
+    const now = new Date();
+    const day = `${now.getDate()}`.padStart(2, 0);
+    const month = `${now.getMonth() + 1}`.padStart(2, 0);
+    const year = now.getFullYear();
+    const hour = `${now.getHours()}`.padStart(2, 0);
+    const min = `${now.getMinutes()}`.padStart(2, 0);
+    labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
 
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
@@ -198,6 +221,10 @@ btnTransfer.addEventListener('click', function (e) {
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
 
+    //Add Transfer Date
+    currentAccount.movementsDates.push(new Date().toISOString());
+    receiverAcc.movementsDates.push(new Date().toISOString());
+
     // Update UI
     updateUI(currentAccount);
   }
@@ -211,6 +238,9 @@ btnLoan.addEventListener('click', function (e) {
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
     currentAccount.movements.push(amount);
+
+    //Add Loan Date
+    currentAccount.movementsDates.push(new Date().toISOString());
 
     // Update UI
     updateUI(currentAccount);
@@ -270,7 +300,7 @@ btnSort.addEventListener('click', function (e) {
 // console.log(parseFloat('   2.5rem    '));
 
 // //Checking if value is NaN
-// console.log(Number.isNaN(20)); // false
+// console.log(Number.isNaN(20)); // true
 // console.log(Number.isNaN('20')); // false
 // console.log(Number.isNaN(+'20X')); // true
 // console.log(Number.isNaN(23 / 0)); // false
@@ -286,40 +316,102 @@ btnSort.addEventListener('click', function (e) {
 // console.log(Number.isInteger(23 / 0)); //false
 
 //----- MATH AND ROUNDING -----
-console.log(Math.sqrt(25));
-console.log(25 ** (1 / 2));
-console.log(8 ** (1 / 3));
+// console.log(Math.sqrt(25));
+// console.log(25 ** (1 / 2));
+// console.log(8 ** (1 / 3));
 
-console.log(Math.max(5, 18, 23, 11, 2));
-console.log(Math.max(5, 18, '23', 11, 2));
-console.log(Math.max(5, 18, '23px', 11, 2)); //doesnt parse
+// console.log(Math.max(5, 18, 23, 11, 2));
+// console.log(Math.max(5, 18, '23', 11, 2));
+// console.log(Math.max(5, 18, '23px', 11, 2)); //doesnt parse
 
-console.log(Math.min(5, 18, 23, 11, 2));
+// console.log(Math.min(5, 18, 23, 11, 2));
 
-console.log(Math.PI * Number.parseFloat('10px') ** 2);
+// console.log(Math.PI * Number.parseFloat('10px') ** 2);
 
-console.log(Math.trunc(Math.random() * 6) + 1);
+// console.log(Math.trunc(Math.random() * 6) + 1);
 
-const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + 1);
+// const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + 1);
 // 0...1 -> 0...(max - min) -> min...max
 // console.log(randomInt(10, 20));
 
 //Rounding Integers
-console.log(Math.trunc(23.3));
+// console.log(Math.trunc(23.3));
 
-console.log(Math.round(23.3));
-console.log(Math.round(23.9));
+// console.log(Math.round(23.3));
+// console.log(Math.round(23.9));
 
-console.log(Math.ceil(23.3));
-console.log(Math.ceil(23.9));
+// console.log(Math.ceil(23.3));
+// console.log(Math.ceil(23.9));
 
-console.log(Math.floor(23.3));
-console.log(Math.floor(23.3));
-console.log(Math.trunc(23.3)); //floor and trunc work the exact same for positive numbers
-console.log(Math.trunc(-23.3));
-console.log(Math.floor(-23.3));
+// console.log(Math.floor(23.3));
+// console.log(Math.floor(23.3));
+// console.log(Math.trunc(23.3)); //floor and trunc work the exact same for positive numbers
+// console.log(Math.trunc(-23.3));
+// console.log(Math.floor(-23.3));
 
-//Rounding decimals
-console.log((2.7).toFixed(0)); //spits out a string
-console.log((2.7).toFixed(3));
-console.log(+(2.345).toFixed(2));
+// //Rounding decimals
+// console.log((2.7).toFixed(0)); //spits out a string
+// console.log((2.7).toFixed(3));
+// console.log(+(2.345).toFixed(2));
+
+//----- Numeric Seperators -----
+// the underscore can be used as a comma or decimal to improve readability and add meaning
+// const diameter = 287_460_000_000;
+// console.log(diameter);
+// const priceCents = 345_99;
+// console.log(priceCents);
+
+// const PI = 3.14_15;
+// console.log(PI)
+//you have to add the _ inbetween two numbers, not at the front, or after the decimal, or at the end
+//really, only use them when youre declaring numbers in code. just think of it as a readability feature
+
+//----- Working with BigInt -----
+//JS is 64 bits, only 53 bits are stored to represent numbers
+//(2 ** 53 -1) is the biggest number JS can safely represent
+// console.log(2 ** 53 - 1);
+// console.log(Number.MAX_SAFE_INTEGER);
+
+// //BigInt allows you to store as big of a number as you want
+// // console.log(4358909837289903748989928884990008828328) //error
+// console.log(4358909837289903748989928884990008828328n);
+//operations all work the same
+//BUT, you cant mix BigInt with regular numbers
+
+//
+//----- Creating Dates -----
+//
+// const now = new Date();
+// console.log(now);
+
+// console.log(new Date('Aug 02 2020 18:05:41'));
+// console.log(new Date('December 24, 2015'));
+// console.log(new Date(account1.movementsDates[0]));
+// console.log(new Date(2037, 10, 19, 15, 23, 5));
+// here you might notice the 10 for the month results  in  November. months are zero based in JS (aray probably)
+// console.log(new Date(2037, 10, 31));
+// //November only has 30 days so JS will autocorrect and give us Dec 1
+
+// console.log(new Date(0)); // you can give JS the milliseconds passed since the start of the UNIX start date (1/1/1970)
+
+// const future = new Date(2037, 10, 19, 15, 23);
+// console.log(future);
+// console.log(future.getFullYear());
+// console.log(future.getMonth());
+// console.log(future.getDate());
+// console.log(future.getDay());
+// console.log(future.getHours());
+// console.log(future.getHours());
+// console.log(future.getMinutes());
+// console.log(future.getSeconds());
+// console.log(future.toISOString());
+// console.log(future.getTime());
+
+// console.log(Date.now())
+
+// future.setFullYear(2040)
+// console.log(future)
+
+//----- Operations with Dates -----
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(+future);
