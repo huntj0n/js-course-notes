@@ -292,13 +292,15 @@ btnLoan.addEventListener('click', function (e) {
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
-    currentAccount.movements.push(amount);
+    setTimeout(function () {
+      currentAccount.movements.push(amount);
 
-    //Add Loan Date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      //Add Loan Date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+    }, 2500);
   }
   inputLoanAmount.value = '';
 });
@@ -477,19 +479,35 @@ btnSort.addEventListener('click', function (e) {
 // console.log(days1);
 
 //----- INTERNATIONALIZING NUMBERS (Intl) -----
-const num = 3884764.23;
+// const num = 3884764.23;
 
-const options = {
-  style: 'currency',
-  unit: 'celsius',
-  currency: 'EUR',
-  //   useGrouping: false,
-};
+// const options = {
+//   style: 'currency',
+//   unit: 'celsius',
+//   currency: 'EUR',
+//   //   useGrouping: false,
+// };
 
-console.log('US: ', new Intl.NumberFormat('en-US', options).format(num));
-console.log('Germany: ', new Intl.NumberFormat('de-DE', options).format(num));
-console.log('Syria: ', new Intl.NumberFormat('ar-SY', options).format(num));
-console.log(
-  'Browser: ',
-  new Intl.NumberFormat(navigator.language, options).format(num)
+// console.log('US: ', new Intl.NumberFormat('en-US', options).format(num));
+// console.log('Germany: ', new Intl.NumberFormat('de-DE', options).format(num));
+// console.log('Syria: ', new Intl.NumberFormat('ar-SY', options).format(num));
+// console.log(
+//   'Browser: ',
+//   new Intl.NumberFormat(navigator.language, options).format(num)
+// );
+
+//----- SET TIMEOUT AND TIMERS -----
+// setTimeout(() => console.log('Here is your pizza', 3000));
+const ingredients = ['olives', 'spinach'];
+const pizzaTimer = setTimeout((ing1, ing2) =>
+  console.log(
+    `Here is your pizza with ${ing1} and ${ing2}`,
+    3000,
+    // 'olives',
+    // 'spinach'
+    ...ingredients
+  )
 );
+console.log('waiting... ');
+
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
