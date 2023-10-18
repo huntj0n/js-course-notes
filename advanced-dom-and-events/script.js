@@ -7,6 +7,7 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".btn--close-modal");
 const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
+const header = document.querySelector(".header");
 
 const openModal = function () {
   modal.classList.remove("hidden");
@@ -39,13 +40,13 @@ console.log(document.body);
 
 document.querySelector(".header");
 const allSections = document.querySelectorAll(".section");
-console.log(allSections);
+// console.log(allSections);
 
 document.getElementById("section--1");
 const allButtons = document.getElementsByTagName("button");
-console.log(allButtons);
+// console.log(allButtons);
 
-console.log(document.getElementsByClassName("btn"));
+// console.log(document.getElementsByClassName("btn"));
 
 const message = document.createElement("div");
 message.classList.add("cookie-message");
@@ -62,10 +63,11 @@ header.append(message);
 // header.after(message);
 
 //DELETE ELEMENMTS
-document
+const cookieClose = document
   .querySelector(".btn--close-cookie")
   .addEventListener("click", function () {
-    message.remove();
+    // message.remove();
+    message.parentElement.removeChild(message);
   });
 
 // Styles
@@ -111,3 +113,52 @@ logo.classList.add("c");
 logo.classList.remobve("c");
 logo.classList.toggle("c");
 logo.classList.containes("c");
+
+//Smooth Scrolling
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#selector--1");
+
+btnScrollTo.addEventListener("click", function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+
+  console.log(e.target.getBoundingClientRect());
+
+  console.log("Current Scroll (X/Y)", window.pageXOffset, window.pageYOffset);
+
+  console.log(
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+
+  //Scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: smooth,
+  // });
+
+  section1.scrollIntoView({ behavior: "smooth" });
+});
+
+//////
+const h1 = document.querySelector("h1");
+
+const alertH1 = function (e) {
+  alert("addEventListener: Great! you are reading the heading!");
+
+  // h1.removeEventListener("mouseenter", alertH1);
+};
+
+h1.addEventListener("mouseenter", alertH1);
+
+setTimeout(() => h1.removeEventListener("mouseenter", alertH1), 3000);
+
+// h1.onmouseenter = function (e) {
+//   alert("onmouseenter: Great! you are reading the heading!");
+// };
