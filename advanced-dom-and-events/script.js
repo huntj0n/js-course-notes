@@ -64,18 +64,8 @@ header.append(message);
 // header.after(message);
 
 //Delete Elements
-// document
-//   .querySelector(".btn--close-cookie")
-//   .addEventListener("click", function () {
-//     // message.remove();
-//     console.log("clicked");
-//   });
-
-document.addEventListener("DOMContentLoaded", function () {
-  document
-    .querySelector(".btn--close-cookie")
-    .addEventListener("click", function () {
-      // message.remove();
-      console.log("clicked");
-    });
-});
+document
+  .querySelector(".cookie-message")
+  .addEventListener("click", function () {
+    message.remove();
+  });
