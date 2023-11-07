@@ -444,3 +444,17 @@ document
 //     el.style.transfrom = "scale(0.5)";
 //   }
 // });
+
+document.addEventListener("DOMContentLoaded", function (e) {
+  console.log("HTML parsed and DOM tree filled");
+});
+
+window.addEventListener("load", function (e) {
+  console.log("Page fully loaded", e);
+});
+
+// window.addEventListener("beforeunload", function (e) {
+//   e.preventDefault();
+//   console.log(e);
+//   e.return = '';
+// });
