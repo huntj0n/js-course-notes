@@ -1,5 +1,6 @@
 "use strict";
 
+/*
 const Person = function (firstName, birthyear) {
   //instance properties
   this.firstName = firstName;
@@ -155,6 +156,29 @@ console.log(account.movements);
 //STATIC METHODS
 // Array.from(document.querySelector("h1"));
 PersonCl.hey();
+*/
+
+//OBJECT.CREATE()
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto);
+console.log(steven);
+steven.name = "Steven";
+steven.birthYear = 2002;
+steven.calcAge();
+
+console.log(steven.__proto__ === PersonProto);
+sarah.init("Sarah", 1979);
+sarah.calcAge();
 
 ////////////////////////////////
 // Coding Challenge #1
