@@ -99,7 +99,7 @@ export.addTocart = function (product, quantity) {
 ///////////////////////////////////////
 // Introduction to NPM
 // import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
-import cloneDeep from "lodash-es";
+import cloneDeep from "n lodash-es";
 
 const state = {
   cart: [
