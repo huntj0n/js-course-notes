@@ -140,36 +140,36 @@ const getJSON = function (url, errorMsg = "something went wront") {
 //     });
 // };
 
-const getCountryData = function (country) {
-  //country 1
-  getJSON(`https://restcountries.com/v2/name/${country}`, "Country not found")
-    .then((data) => {
-      renderCountry(data[0]);
-      const neighbour = data[0].borders[0];
+// const getCountryData = function (country) {
+//   //country 1
+//   getJSON(`https://restcountries.com/v2/name/${country}`, "Country not found")
+//     .then((data) => {
+//       renderCountry(data[0]);
+//       const neighbour = data[0].borders[0];
 
-      if (!neighbour) throw new Error("No Neighbour found!");
+//       if (!neighbour) throw new Error("No Neighbour found!");
 
-      //country 2
-      return getJSON(
-        `https://restcountries.com/v2/alpha/${neighbour}`,
-        "Couuntry not found"
-      );
-    })
-    .then((data) => renderCountry(data, "neighbour"))
-    .catch((err) => {
-      console.log(`${err} !!!!`);
-      renderError(`something went wrong!! ${err.message}`);
-    })
-    .finally(() => {
-      countriesContainer.style.opacity = 1;
-    });
-};
+//       //country 2
+//       return getJSON(
+//         `https://restcountries.com/v2/alpha/${neighbour}`,
+//         "Couuntry not found"
+//       );
+//     })
+//     .then((data) => renderCountry(data, "neighbour"))
+//     .catch((err) => {
+//       console.log(`${err} !!!!`);
+//       renderError(`something went wrong!! ${err.message}`);
+//     })
+//     .finally(() => {
+//       countriesContainer.style.opacity = 1;
+//     });
+// };
 
-btn.addEventListener("click", function () {
-  //getCountryData("portugal");
-  //   getCountryData("usa");
-  getCountryData("australia");
-});
+// btn.addEventListener("click", function () {
+//   getCountryData("portugal");
+//   //   getCountryData("usa");
+//   //   getCountryData("australia");
+// });
 
 //////////////////////////////
 //  CODING CHALLENGE #1
@@ -230,3 +230,20 @@ GOOD LUCK �
 // whereAmI(52.508, 13.381);
 // whereAmI(19.037, 72.873);
 // whereAmI(-33.933, 18.474);
+
+//
+//
+//////////////////////////////
+//  The Event Loop in Practice
+
+// console.log("Test start");
+// setTimeout(() => console.log("0 sec timer"), 0);
+// Promise.resolve("resolved promise 1").then((res) => console.log(res));
+
+// Promise.resolve("resolved promise 2").then((res) => {
+//   for (let i = 0; i < 1000; i++) {
+//     console.log(res);
+//   }
+// });
+
+// console.log("test end");
