@@ -51,32 +51,92 @@ console.log(cart);
 ///////////////////////////////////////
 // The Module Pattern
 
-const ShoppingCart2 = (function () {
-  const cart = [];
-  const shippingCost = 10;
-  const totalPrice = 237;
-  const totalQuantity = 23;
+// const ShoppingCart2 = (function () {
+//   const cart = [];
+//   const shippingCost = 10;
+//   const totalPrice = 237;
+//   const totalQuantity = 23;
 
-  const addToCart = function (product, quantity) {
+//   const addToCart = function (product, quantity) {
+//     cart.push({ product, quantity });
+//     console.log(
+//       `${quantity} ${product} added to cart (sipping cost is ${shippingCost})`
+//     );
+//   };
+
+//   const orderStock = function (product, quantity) {
+//     console.log(`${quantity} ${product} ordered from supplier`);
+//   };
+
+//   return {
+//     addToCart,
+//     cart,
+//     totalPrice,
+//     totalQuantity,
+//   };
+// })();
+
+// ShoppingCart2.addToCart("apple", 4);
+// ShoppingCart2.addToCart("pizza", 2);
+// console.log(ShoppingCart2);
+// console.log(ShoppingCart2.shippingCost);
+
+/*
+///////////////////////////////////////
+// CommonJS Modules
+//These wont work in the browser but will work in NODE.JS and is important to know for future courses
+// Export
+export.addTocart = function (product, quantity) {
     cart.push({ product, quantity });
     console.log(
       `${quantity} ${product} added to cart (sipping cost is ${shippingCost})`
     );
   };
+  
+  // Import
+  const { addTocart } = require('./shoppingCart.js');
+*/
+///////////////////////////////////////
+// Introduction to NPM
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+import cloneDeep from "lodash-es";
 
-  const orderStock = function (product, quantity) {
-    console.log(`${quantity} ${product} ordered from supplier`);
-  };
+const state = {
+  cart: [
+    { product: "bread", quantity: 5 },
+    { product: "pizza", quantity: 5 },
+  ],
+  user: { loggedIn: true },
+};
+const stateClone = Object.assign({}, state);
+const stateDeepClone = cloneDeep(state);
 
-  return {
-    addToCart,
-    cart,
-    totalPrice,
-    totalQuantity,
-  };
-})();
+state.user.loggedIn = false;
+console.log(stateClone);
 
-ShoppingCart2.addToCart("apple", 4);
-ShoppingCart2.addToCart("pizza", 2);
-console.log(ShoppingCart2);
-console.log(ShoppingCart2.shippingCost);
+console.log(stateDeepClone);
+
+if (module.hot) {
+  module.hot.accept();
+}
+
+class Person {
+  #greeting = "Hey";
+  constructor(name) {
+    this.name = name;
+    console.log(`${this.#greeting}, ${this.name}`);
+  }
+}
+const jonas = new Person("Jonas");
+
+console.log("Jonas" ?? null);
+
+console.log(cart.find((el) => el.quantity >= 2));
+Promise.resolve("TEST").then((x) => console.log(x));
+
+import "core-js/stable";
+// import 'core-js/stable/array/find';
+// import 'core-js/stable/promise';
+
+// Polifilling async functions
+import "regenerator-runtime/runtime";
