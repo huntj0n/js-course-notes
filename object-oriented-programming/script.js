@@ -159,26 +159,59 @@ PersonCl.hey();
 */
 
 //OBJECT.CREATE()
-const PersonProto = {
-  calcAge() {
-    console.log(2037 - this.birthYear);
-  },
+// const PersonProto = {
+//   calcAge() {
+//     console.log(2037 - this.birthYear);
+//   },
 
-  init(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-  },
+//   init(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+//   },
+// };
+
+// const steven = Object.create(PersonProto);
+// console.log(steven);
+// steven.name = "Steven";
+// steven.birthYear = 2002;
+// steven.calcAge();
+
+// console.log(steven.__proto__ === PersonProto);
+// sarah.init("Sarah", 1979);
+// sarah.calcAge();
+
+//INHERITANCE BETWEEN 'CLASSES' CONSTRUCTOR FUNCTIONS
+const Person = function (firstName, birthYear) {
+  (this.firstName = firstName), (this.birthYear = birthYear);
 };
 
-const steven = Object.create(PersonProto);
-console.log(steven);
-steven.name = "Steven";
-steven.birthYear = 2002;
-steven.calcAge();
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
 
-console.log(steven.__proto__ === PersonProto);
-sarah.init("Sarah", 1979);
-sarah.calcAge();
+const Student = function (firstName, birthYear, course) {
+  Person.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const mike = new Student("Mike", 2020, "Computer Science");
+mike.introduce();
+mike.calcAge();
+
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
+
+console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor);
 
 ////////////////////////////////
 // Coding Challenge #1
@@ -234,6 +267,7 @@ DATA Car 2: "Mercedes" going at 95 km/h
 DATA 1: 'Ford' going at 120km/h
  */
 
+/*
 class CarCl {
   constructor(make, speed) {
     (this.make = make), (this.speed = speed);
@@ -264,3 +298,4 @@ ford.accelerate();
 ford.brake();
 ford.speedUS = 50;
 console.log(ford);
+*/
